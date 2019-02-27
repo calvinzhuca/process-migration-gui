@@ -1,0 +1,53 @@
+{
+  "name": "process-migration-gui",
+  "version": "0.1.0",
+  "description": "Process Instances Migration GUI project",
+  "main": "src/index.js",
+  "scripts": {
+    "compile": "webpack",
+    "build": "webpack -p",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "react",
+    "webpack",
+    "babel",
+    "minimal",
+    "starter"
+  ],
+  "author": "Calvin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ahfarmer/minimal-react-starter.git"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "axios": "^0.18.0",
+    "babel-loader": "^8.0.0",
+    "bootstrap": "^4.1.3",
+    "express": "^4.16.3",
+    "moment": "^2.23.0",
+    "patternfly-react": "^2.24.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-datetime": "^2.16.3",
+    "react-dom": "^16.4.1",
+    "react-svg-pan-zoom": "^2.18.0",
+    "react-svgmt": "^1.1.6",
+    "styled-components": "^3.4.10",
+    "webpack": "^4.16.3",
+    "webpack-dev-middleware": "^3.1.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "css-loader": "^1.0.0",
+    "raw-loader": "^0.5.1",
+    "react-svg-loader": "^2.1.0",
+    "style-loader": "^0.23.0",
+    "webpack-cli": "^3.2.3"
+  }
+}
