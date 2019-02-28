@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>org.kie</groupId>
-    <artifactId>backend</artifactId>
+    <artifactId>pim-gui-backend</artifactId>
     <name>Process Instance Migration GUI Java Backend</name>
     <packaging>war</packaging>
 
