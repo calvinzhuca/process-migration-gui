@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from "patternfly-react";
 import { Modal } from "patternfly-react";
-
+import { Icon } from 'patternfly-react';
 export default class MigrationPlansEditPopup extends React.Component {
 
 
@@ -54,10 +54,18 @@ export default class MigrationPlansEditPopup extends React.Component {
       </form>
     );
 
+    function DisplayLabel(props) {
+        if (props.actionName == 'Import Plan'){
+            return <div>{props.actionName}</div>
+        }else{
+            return <Icon type="fa" name="play" />
+        }
+    }
+
+
     return (
       <span>
-        <Button bsStyle="default" onClick={this.openEditPlanPopup}>
-          {this.props.actionName}
+        <Button bsStyle="default" onClick={this.openEditPlanPopup}><DisplayLabel actionName={this.props.actionName}/>
         </Button>
 
         <Modal show={this.state.showEditPlanPopup} onHide={this.closeEditPlanPopup} >
