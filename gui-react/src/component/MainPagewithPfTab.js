@@ -11,7 +11,7 @@ export default class MainPagewithPfTab extends Component {
 
  createMenuItems() {
      let menuItems = [];
-      menuItems.push(<MenuItem eventKey={1} >{KIE_SERVER_ID}</MenuItem>);
+      menuItems.push(<MenuItem key={1} >{KIE_SERVER_ID}</MenuItem>);
       return menuItems;
  }
 
@@ -29,7 +29,7 @@ export default class MainPagewithPfTab extends Component {
                 <div className="col-xs-3">
                     <br/>
                     <div className="pull-right">
-                      <DropdownButton
+                      <DropdownButton id={'kieDropDown'}
                           title={'KIE Server Name'}
                           >
                           {this.createMenuItems()}

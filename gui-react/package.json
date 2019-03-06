@@ -6,7 +6,8 @@
   "scripts": {
     "compile": "webpack",
     "build": "webpack -p",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest"
   },
   "keywords": [
     "react",
@@ -45,7 +46,9 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "babel-jest": "^24.1.0",
     "css-loader": "^1.0.0",
+    "jest": "^24.1.0",
     "raw-loader": "^0.5.1",
     "react-svg-loader": "^2.1.0",
     "style-loader": "^0.23.0",
