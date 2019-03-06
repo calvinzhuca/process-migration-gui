@@ -26,7 +26,7 @@ export default class PageMappingDropdownNode extends React.Component {
       for (var i = 0; i < options.length; i++){
           const value = options[i].value;
           const label = options[i].label;
-          menuItems.push(<MenuItem eventKey={value} onSelect={this.handleChange}>{label}</MenuItem>);
+          menuItems.push(<MenuItem key={i} eventKey={value} onSelect={this.handleChange}>{label}</MenuItem>);
       }
       return menuItems;
   }
@@ -42,7 +42,7 @@ export default class PageMappingDropdownNode extends React.Component {
     return (
         <div>
             <DropdownButton
-                title={this.state.title}
+                title={this.state.title} id="PageMappingDropdownButton"
                 >
                 {this.createMenuItems(this.props.options)}
              </DropdownButton>

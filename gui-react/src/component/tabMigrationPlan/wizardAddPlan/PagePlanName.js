@@ -4,8 +4,10 @@ import React, { Component } from 'react';
 export default class PagePlanName extends Component {
 
     componentDidMount(){
-        document.getElementById("id_PagePlanName_name").value=this.props.name;
-        document.getElementById("id_PagePlanName_description").value=this.props.description;
+        if (document.getElementById("id_PagePlanName_name") != null){
+            document.getElementById("id_PagePlanName_name").value=this.props.name;
+            document.getElementById("id_PagePlanName_description").value=this.props.description;
+        }
     }
 
   render() {
