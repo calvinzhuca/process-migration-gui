@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
-import PagePlanName from "../component/tabMigrationPlan/wizardAddPlan/PagePlanName";
+import PagePlanName from "../../component/tabMigrationPlan/wizardAddPlan/PagePlanName";
 
     test('PagePlanName renders correctly using snapshot', () => {
       const tree = renderer.create(

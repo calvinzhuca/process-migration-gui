@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
-import PageMappingDropdownNode from "../component/tabMigrationPlan/wizardAddPlan/PageMappingDropdownNode";
+import PageMappingDropdownNode from "../../component/tabMigrationPlan/wizardAddPlan/PageMappingDropdownNode";
 
 
 

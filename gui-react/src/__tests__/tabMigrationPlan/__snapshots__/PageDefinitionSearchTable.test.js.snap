@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageDefinitionSearchTable renders correctly using snapshot 1`] = `
+<div>
+  <div
+    className="form-group required"
+  >
+    <label
+      className="col-sm-2 control-label"
+    >
+      Source 
+       processId
+    </label>
+    <div
+      className="col-sm-10"
+    >
+      <input
+        className="form-control"
+        name="processId"
+        onChange={[Function]}
+        type="text"
+        value="testProcessId"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group required"
+  >
+    <label
+      className="col-sm-2 control-label"
+    >
+      Source 
+       Group ID
+    </label>
+    <div
+      className="col-sm-10"
+    >
+      <input
+        className="form-control"
+        name="groupId"
+        onChange={[Function]}
+        type="text"
+        value="testGroupId"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group required"
+  >
+    <label
+      className="col-sm-2 control-label"
+    >
+      Source 
+       Artifact ID
+    </label>
+    <div
+      className="col-sm-10"
+    >
+      <input
+        className="form-control"
+        name="artifactId"
+        onChange={[Function]}
+        type="text"
+        value="testArtifactId"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group required"
+  >
+    <label
+      className="col-sm-2 control-label"
+    >
+      Source 
+       Version
+    </label>
+    <div
+      className="col-sm-10"
+    >
+      <input
+        className="form-control"
+        name="version"
+        onChange={[Function]}
+        type="text"
+        value="testVersion"
+      />
+    </div>
+  </div>
+</div>
+`;

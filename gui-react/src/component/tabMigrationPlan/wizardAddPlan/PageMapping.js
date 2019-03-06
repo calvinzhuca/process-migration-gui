@@ -7,18 +7,26 @@ import PageMappingDropdownNode from './PageMappingDropdownNode'
 
 
 export default class PageMapping extends Component {
+    //need to provide some dummy data for the selectors which are used in svg pan, because
+    //it's required and can't be empty, and need to start with "_"
+    //can't do the initial in the sub components like PageMappingDiagramsSvgPan because they
+    //are passed in through props
   constructor (props) {
     super(props);
     this.state = {
                   sourceNodeStr: '',
                   targetNodeStr: '',
                   sourceDiagramshown: false,
-                  targetDiagramshown: false
+                  targetDiagramshown: false,
+                  sourceCurrentSelector: '_Dummy123',
+                  sourcePreviousSelector: '_Dummy123',
+                  targetCurrentSelector: '_Dummy123',
+                  targetPreviousSelector: '_Dummy123'
                 };
 
   }
 
-  //This is used in add plan wizard (for edit plan) to load the inital data to form fields
+//This is used in add plan wizard (for edit plan) to load the inital data to form fields
 //  componentDidMount(){
 //      var mappingField =  document.getElementById("nodeMappingField");
 //      console.log('PageMapping componentDidMount mappingField ' + mappingField);
@@ -26,9 +34,7 @@ export default class PageMapping extends Component {
 //  }
     componentDidUpdate(){
         var mappingField =  document.getElementById("nodeMappingField");
-        console.log('PageMapping componentDidUpdate mappingField ' + mappingField);
         if (mappingField != null){
-            console.log('mappingField != null ' );
             if (this.props.mappings !== null && this.props.mappings != ""){
                 if (mappingField.value === null || mappingField.value ===''){
                     mappingField.value=JSON.stringify(this.props.mappings);
