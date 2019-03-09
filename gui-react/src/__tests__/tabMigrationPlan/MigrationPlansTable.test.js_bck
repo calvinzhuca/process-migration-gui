@@ -1,0 +1,21 @@
+import renderer from 'react-test-renderer';
+import React from 'react';
+import MigrationPlansTable from "../../component/tabMigrationPlan/MigrationPlansTable";
+
+test("MigrationPlansTable renders correctly using snapshot", () => {
+  const myMock = jest.fn();
+  const tree = renderer
+    .create(
+        <MigrationPlansTable
+            openMigrationWizard={myMock}
+            openAddPlanWizard={myMock}
+            openAddPlanWizardwithInitialData={myMock}
+            showDeleteDialog={'true'}
+            filteredPlans={myMock}
+            updatePlan={myMock}
+            retrieveAllPlans={myMock}
+        />
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});

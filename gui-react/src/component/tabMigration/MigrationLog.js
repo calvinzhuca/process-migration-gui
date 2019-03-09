@@ -6,8 +6,8 @@ export default class MigrationLog extends Component {
 
   render() {
       let flag = '' + this.props.log.successful;
-      let logs = this.props.log.logs.map((log) =>
-            <li>{log}</li>
+      let logs = this.props.log.logs.map((log, i) =>
+            <li key={i}>{log}</li>
             );
     return (
 
