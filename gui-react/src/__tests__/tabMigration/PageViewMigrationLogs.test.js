@@ -5,7 +5,6 @@ import PageViewMigrationLogs from "../../component/tabMigration/PageViewMigratio
 
 test("PageViewMigrationLogs renders correctly using snapshot", () => {
   const mockData = MockupData_Migrations_Logs;
-  const myMock = jest.fn();
   const tree = renderer
     .create(
       <PageViewMigrationLogs migrationLogs={mockData} />
