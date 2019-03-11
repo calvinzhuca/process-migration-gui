@@ -60,38 +60,34 @@ export default class PageMigrationScheduler extends Component {
 
     return (
         <div className="form-horizontal">
-
-            <table border="0" width="100%" height="30%">
-              <tbody>
-              <tr>
-                  <td width="30%"/>
-                  <td width="40%" align="left">
-                      Callback URL: <input type="text" name="callbackUrl" onChange={this.setCallbackUrl} value={this.props.callbackUrl}/>
-                </td>
-                <td width="40%"/>
-              </tr>
-                <tr>
-                    <td width="30%"/>
-                    <td width="40%" align="left">
-                        <input type="radio" name="timeType" value="1" onClick={this.disableScheduleTime}/>Run Migration Now
-                    </td>
-                    <td width="30%"/>
-                </tr>
-                <tr>
-                    <td width="30%"/>
-                    <td width="40%" align="left">
-                        <input type="radio" name="timeType" value="2" defaultChecked onClick={this.enableScheduleTime} />Schedule Migration
-                        <Datetime id="PageMigrationScheduler_scheduleTime"
-                            input={this.state.dateTimeInput}
-                            onChange={this.handleDateTimeInput}
-                            isValidDate={this.validDate }
-                        />
-                  </td>
-                  <td width="40%"/>
-                </tr>
-
-              </tbody>
-            </table>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Callback URL:</label>
+                <div class="col-md-8">
+                    <input type="text" name="callbackUrl" onChange={this.setCallbackUrl} value={this.props.callbackUrl}/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Run migration:</label>
+                <div class="col-md-8">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="timeType" value="1" onClick={this.disableScheduleTime}/>
+                            Now
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="timeType" value="2" onClick={this.enableScheduleTime}/>
+                            Schedule
+                            <Datetime id="PageMigrationScheduler_scheduleTime"
+                                input={this.state.dateTimeInput}
+                                onChange={this.handleDateTimeInput}
+                                isValidDate={this.validDate }
+                            />
+                        </label>
+                    </div>
+                </div>
+            </div>
 
         </div>
 

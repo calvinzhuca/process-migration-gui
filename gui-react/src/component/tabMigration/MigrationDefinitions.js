@@ -297,6 +297,7 @@ export default class MigrationDefinitions extends Component {
             secondaryContent={secondaryContent}
             accessibleName="viewMigrationLogsDialog"
             accessibleDescription="migrationDetailDialogContent"
+            className="kie-pim-dialog--wide"
         />
 
         {/* Delete migration definition pop-up */}

@@ -71,7 +71,7 @@ export default class MigrationPlansEditPopup extends React.Component {
       <span>
         <DisplayButtonOrLabel actionName={this.props.actionName}  openEditPlanPopup={this.openEditPlanPopup}/>
 
-        <Modal show={this.state.showEditPlanPopup} onHide={this.closeEditPlanPopup} >
+        <Modal show={this.state.showEditPlanPopup} onHide={this.closeEditPlanPopup} size="lg">
           <Modal.Header>
             <Modal.CloseButton onClick={this.closeEditPlanPopup} />
             <Modal.Title>{this.props.title}</Modal.Title>
@@ -82,7 +82,7 @@ export default class MigrationPlansEditPopup extends React.Component {
               Cancel
             </Button>
             <Button bsStyle="primary" onClick={this.submit}>
-              {this.props.buttonLabel}
+              {this.props.actionName}
             </Button>
           </Modal.Footer>
         </Modal>
