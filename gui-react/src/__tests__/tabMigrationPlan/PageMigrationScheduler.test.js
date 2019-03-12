@@ -1,16 +1,24 @@
 import renderer from "react-test-renderer";
 import React from "react";
-import PageMigrationScheduler from "../../component/tabMigrationPlan/wizardExecuteMigration/PageMigrationScheduler";
+import {render, fireEvent, cleanup} from 'react-testing-library';
+import PageMigrationScheduler from "../../component/tabMigrationPlan/wizardExecuteMigration/PageMigrationScheduler.js";
 
-test("PageMigrationScheduler renders correctly using snapshot", () => {
-  const myMock = jest.fn();
-  const tree = renderer
-    .create(
-      <PageMigrationScheduler
-        setCallbackUrl={myMock}
-        setScheduleStartTime={myMock}
-      />
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+
+// automatically unmount and cleanup DOM after the test is finished.
+afterEach(cleanup);
+
+//Because PageMigrationScheduler's DataTime component will update everyday to disable selection of old dates, so usuing snap-shot wont' work.
+//instead I use react-testing-library here to compare expect components which I set a testId. 
+test("PageMigrationScheduler renders expected components", () => {
+      const myMock = jest.fn();
+  const  {getByTestId} = render(
+    <PageMigrationScheduler
+    setCallbackUrl={myMock}
+    setScheduleStartTime={myMock}
+    />
+  );
+
+  expect(getByTestId("testid_callback")).toBeTruthy();
+  expect(getByTestId("testid_syncMode")).toBeTruthy();
+  expect(getByTestId("testid_asyncMode")).toBeTruthy();
 });
