@@ -10,7 +10,7 @@ export default class PageViewMigrationLogs extends Component {
       function DisplayMessage(props){
           if ( props.migrationLogs!= null && props.migrationLogs!=''){
               return <div>
-                        {props.migrationLogs.map((log, key) =>
+                        {props.migrationLogs.map((log) =>
                             <MigrationLog log={log} key={log.id} />
                         )}
                     </div>

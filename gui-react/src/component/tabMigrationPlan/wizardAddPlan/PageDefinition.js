@@ -25,20 +25,21 @@ export default class PageDefinition extends Component {
 
     //This is used in add plan wizard (for edit plan) to load the inital data to form fields
     componentDidMount(){
+        if (this.props.initSourceContainerId != null){
+            const sourceVersion = this.props.initSourceContainerId.substring((this.props.initSourceContainerId.indexOf('_') + 1),this.props.initSourceContainerId.length);
+            const targetVersion = this.props.initTargetContainerId.substring((this.props.initTargetContainerId.indexOf('_') + 1),this.props.initTargetContainerId.length);
 
-        const sourceVersion = this.props.initSourceContainerId.substring((this.props.initSourceContainerId.indexOf('_') + 1),this.props.initSourceContainerId.length);
-        const targetVersion = this.props.initTargetContainerId.substring((this.props.initTargetContainerId.indexOf('_') + 1),this.props.initTargetContainerId.length);
-
-        this.setState({
-            sourceProcessId: this.props.initProcessId,
-            sourceGroupId: this.props.initProcessId,
-            sourceArtifactId: this.props.initProcessId,
-            sourceVersion: sourceVersion,
-            targetProcessId: this.props.initProcessId,
-            targetGroupId: this.props.initProcessId,
-            targetArtifactId: this.props.initProcessId,
-            targetVersion: targetVersion
-        });
+            this.setState({
+                sourceProcessId: this.props.initProcessId,
+                sourceGroupId: this.props.initProcessId,
+                sourceArtifactId: this.props.initProcessId,
+                sourceVersion: sourceVersion,
+                targetProcessId: this.props.initProcessId,
+                targetGroupId: this.props.initProcessId,
+                targetArtifactId: this.props.initProcessId,
+                targetVersion: targetVersion
+            });
+        }
     }
 
     //this function is for helping test only

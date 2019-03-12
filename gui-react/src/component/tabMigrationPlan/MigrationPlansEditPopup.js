@@ -54,6 +54,7 @@ export default class MigrationPlansEditPopup extends React.Component {
       </form>
     );
 
+
     function DisplayButtonOrLabel(props) {
       if (props.actionName == 'Import Plan'){
           return <Button bsStyle="default" onClick={props.openEditPlanPopup}>
@@ -64,6 +65,7 @@ export default class MigrationPlansEditPopup extends React.Component {
                       <Icon type="pf" name="export" />
                   </Button>
       }
+
     }
 
 

@@ -1,9 +1,5 @@
 import React from "react";
 
-import { DropdownButton, MenuItem, SplitButton, select } from "patternfly-react";
-
-
-
 export default class MigrationPlanListFilter extends React.Component {
 
     constructor(props) {

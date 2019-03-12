@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as Datetime from 'react-datetime';
+import Datetime from 'react-datetime';
 import moment from 'moment';
 
 export default class PageMigrationScheduler extends Component {
@@ -61,7 +61,7 @@ export default class PageMigrationScheduler extends Component {
     return (
         <div className="form-horizontal">
             <div class="form-group">
-                <label class="col-md-4 control-label">Callback URL:</label>
+                <label class="col-md-4 control-label" data-testid="testid_callback">Callback URL:</label>
                 <div class="col-md-8">
                     <input type="text" name="callbackUrl" onChange={this.setCallbackUrl} value={this.props.callbackUrl}/>
                 </div>
@@ -70,13 +70,13 @@ export default class PageMigrationScheduler extends Component {
                 <label class="col-md-4 control-label">Run migration:</label>
                 <div class="col-md-8">
                     <div class="radio">
-                        <label>
+                        <label data-testid="testid_syncMode">
                             <input type="radio" name="timeType" value="1" onClick={this.disableScheduleTime}/>
                             Now
                         </label>
                     </div>
                     <div class="radio">
-                        <label>
+                        <label data-testid="testid_asyncMode">
                             <input type="radio" name="timeType" value="2" onClick={this.enableScheduleTime}/>
                             Schedule
                             <Datetime id="PageMigrationScheduler_scheduleTime"
@@ -88,7 +88,6 @@ export default class PageMigrationScheduler extends Component {
                     </div>
                 </div>
             </div>
-
         </div>
 
     );

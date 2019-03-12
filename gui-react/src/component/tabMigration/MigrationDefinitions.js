@@ -104,7 +104,6 @@ export default class MigrationDefinitions extends Component {
 
     retriveMigrationDefinitions = () =>{
         const input = document.getElementById("id_migrationsDefinitions_input1");
-        console.log('retriveMigrationDefinitions: ' +  input.value);
 
         if (USE_MOCK_DATA){
             console.log('retriveMigrationDefinitions use mock data: ');
@@ -114,6 +113,7 @@ export default class MigrationDefinitions extends Component {
              });
 
         }else{
+            if (input != null){
                 const serviceUrl = BACKEND_URL + '/migrations/' + input.value;
                 axios.get(serviceUrl, {
                 }).then (res => {
@@ -129,7 +129,8 @@ export default class MigrationDefinitions extends Component {
                     this.setState({
                         migrationsDefinitions
                      });
-              });
+                });
+            }
         }
 
 
@@ -160,7 +161,7 @@ export default class MigrationDefinitions extends Component {
           cell: {
             formatters:  [
               (value, { rowData }) => [
-                  <DisplayStatus rowData={rowData} retriveMigrationLogs={this.retriveMigrationLogs}/>
+                  <DisplayStatus key="0" rowData={rowData} retriveMigrationLogs={this.retriveMigrationLogs}/>
 
               ]
             ]
@@ -205,7 +206,7 @@ export default class MigrationDefinitions extends Component {
           cell: {
               formatters:  [
                 (value, { rowData }) => [
-                    <Table.Cell>{rowData.definition.execution.scheduledStartTime}</Table.Cell>
+                    <Table.Cell key="0">{rowData.definition.execution.scheduledStartTime}</Table.Cell>
 
                 ]
               ]
@@ -237,7 +238,7 @@ export default class MigrationDefinitions extends Component {
                     <Table.Actions key="0">
                           <Table.Button bsStyle="link" onClick={() => this.showDeleteDialog(rowData.id)}><Icon type="fa" name="trash" /></Table.Button>
                     </Table.Actions>,
-                    <DisplayActions rowData={rowData} openEditMigration={this.openEditMigration}/>
+                    <DisplayActions key="1" rowData={rowData} openEditMigration={this.openEditMigration}/>
                 ]
               ]
           },
