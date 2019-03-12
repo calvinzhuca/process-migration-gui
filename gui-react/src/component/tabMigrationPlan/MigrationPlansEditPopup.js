@@ -54,21 +54,26 @@ export default class MigrationPlansEditPopup extends React.Component {
       </form>
     );
 
-    function DisplayLabel(props) {
-        if (props.actionName == 'Import Plan'){
-            return <div>{props.actionName}</div>
-        }else{
-            return <Icon type="fa" name="play" />
-        }
+
+    function DisplayButtonOrLabel(props) {
+      if (props.actionName == 'Import Plan'){
+          return <Button bsStyle="default" onClick={props.openEditPlanPopup}>
+                      {props.actionName}
+                  </Button>
+      }else{
+          return  <Button bsStyle="link" onClick={props.openEditPlanPopup}>
+                      <Icon type="pf" name="export" />
+                  </Button>
+      }
+
     }
 
 
     return (
       <span>
-        <Button bsStyle="default" onClick={this.openEditPlanPopup}><DisplayLabel actionName={this.props.actionName}/>
-        </Button>
+        <DisplayButtonOrLabel actionName={this.props.actionName}  openEditPlanPopup={this.openEditPlanPopup}/>
 
-        <Modal show={this.state.showEditPlanPopup} onHide={this.closeEditPlanPopup} >
+        <Modal show={this.state.showEditPlanPopup} onHide={this.closeEditPlanPopup} size="lg">
           <Modal.Header>
             <Modal.CloseButton onClick={this.closeEditPlanPopup} />
             <Modal.Title>{this.props.title}</Modal.Title>
@@ -79,7 +84,7 @@ export default class MigrationPlansEditPopup extends React.Component {
               Cancel
             </Button>
             <Button bsStyle="primary" onClick={this.submit}>
-              {this.props.buttonLabel}
+              {this.props.actionName}
             </Button>
           </Modal.Footer>
         </Modal>

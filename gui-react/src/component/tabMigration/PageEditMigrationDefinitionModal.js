@@ -125,22 +125,28 @@ export default class PageEditMigrationDefinitionModal extends React.Component {
 
     const defaultBody = (
         <div>
-              <table>
-                <thead>
-                    <tr>
-                        <th width="20%">Plan ID</th>
-                        <th width="40%">Process Instances ID</th>
-                        <th width="40%">Kie Server ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td width="20%">{this.state.planId}</td>
-                        <td width="40%">{JSON.stringify(this.state.processInstanceIds)}</td>
-                        <td width="40%">{this.state.kieserverId}</td>
-                    </tr>
-                </tbody>
-              </table>
+          <div className="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-4 control-label"> Plan ID</label>
+                <div class="col-md-8">
+                {this.state.planId}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label"> Process Instances ID</label>
+                <div class="col-md-8">
+                {JSON.stringify(this.state.processInstanceIds)}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label"> KIE Server ID</label>
+                <div class="col-md-8">
+                {this.state.kieserverId}
+                </div>
+            </div>
+
+        </div>
+
 
               <PageMigrationScheduler
                 setCallbackUrl={this.setCallbackUrl}
@@ -157,7 +163,7 @@ export default class PageEditMigrationDefinitionModal extends React.Component {
           <Icon type="fa" name="edit" />
         </Button>
 
-        <Modal show={this.state.showEditDialog} onHide={this.hideEditDialog} >
+        <Modal show={this.state.showEditDialog} onHide={this.hideEditDialog} size="lg" >
           <Modal.Header>
             <Modal.CloseButton onClick={this.hideEditDialog} />
             <Modal.Title>Edit Migration Definition</Modal.Title>

@@ -188,7 +188,7 @@ export default class PageDefinition extends Component {
     return (
       <div className="form-horizontal">
                     <Button onClick={this.fillWithTestRecord}>quick fill for testing</Button>
-
+                    <p/>
                     <PageDefinitionSearchTable tableHeader="Source "
                         processId={this.state.sourceProcessId}
                         groupId={this.state.sourceGroupId}
@@ -205,7 +205,7 @@ export default class PageDefinition extends Component {
                     />
 
                     <Button onClick={this.copySourceToTarget}> Copy Source To Target</Button>
-
+                    <p/>
                     <PageDefinitionSearchTable tableHeader="Target "
                         processId={this.state.targetProcessId}
                         groupId={this.state.targetGroupId}
@@ -222,7 +222,7 @@ export default class PageDefinition extends Component {
                     />
 
 
-                    <Button bsStyle="default" onClick={() => this.retriveBothInfo()}>Retrive definition from backend</Button>
+                    <Button bsStyle="default" onClick={() => this.retriveBothInfo()}>Retrieve definition from backend</Button>
 
                     <div className="form-group">
                         <label className="col-sm-2 control-label">{this.props.sourceInfo.containerId}</label>

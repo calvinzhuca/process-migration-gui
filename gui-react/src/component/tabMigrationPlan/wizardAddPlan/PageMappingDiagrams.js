@@ -7,7 +7,7 @@ import PageMappingDiagramsSvgPan from './PageMappingDiagramsSvgPan'
 export default class PageMappingDiagrams extends Component {
 
     displayDiagramButton(onclickAction, displayText){
-        return <Button bsStyle="info" onClick={onclickAction}>{displayText}</Button>;
+        return <Button bsStyle="default" onClick={onclickAction}>{displayText}</Button>;
     }
 
     render () {
@@ -27,7 +27,7 @@ export default class PageMappingDiagrams extends Component {
             <div className="form-group">
 
                     {this.displayDiagramButton(this.props.sourceDiagramButtonClick, sourceDisplayText)}
-
+&nbsp;
                     {this.displayDiagramButton(this.props.targetDiagramButtonClick, targetDisplayText)}
 
                   <h2 style={sourceShown}>

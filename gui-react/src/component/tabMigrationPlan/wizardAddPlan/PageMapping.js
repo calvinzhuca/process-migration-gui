@@ -161,18 +161,19 @@ export default class PageMapping extends Component {
                       title='Source Nodes '
                       onDropdownChange={this.handleSourceDropdownChange}
                     />
-
+                    <br/>
                     <label>Target: {this.props.targetInfo.processId}</label>
                     <PageMappingDropdownNode
                       options={targetNode}
                       title='Target Nodes '
                       onDropdownChange={this.handleTargetDropdownChange}
                     />
+                    <br/>
                     {this.MappingButton()}
             </div>
 
             <div className="form-group">
-                    <label >Use below text field to update mappings directly, like delete a wrong mapping:</label>
+                    <label >Use the text field below to update mappings directly (e.g. to delete an incorrect mapping)</label>
 
                     <textarea className="form-control" name="mappings" id="nodeMappingField" rows="2" />
 
