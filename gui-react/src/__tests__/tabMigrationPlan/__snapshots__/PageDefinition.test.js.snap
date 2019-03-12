@@ -12,6 +12,7 @@ exports[`PageDefinition renders correctly using snapshot 1`] = `
   >
     quick fill for testing
   </button>
+  <p />
   <div>
     <div
       className="form-group required"
@@ -106,6 +107,7 @@ exports[`PageDefinition renders correctly using snapshot 1`] = `
   >
      Copy Source To Target
   </button>
+  <p />
   <div>
     <div
       className="form-group required"
@@ -198,7 +200,7 @@ exports[`PageDefinition renders correctly using snapshot 1`] = `
     onClick={[Function]}
     type="button"
   >
-    Retrive definition from backend
+    Retrieve definition from backend
   </button>
   <div
     className="form-group"

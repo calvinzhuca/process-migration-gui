@@ -8,9 +8,7 @@ exports[`MigrationPlansEditPopup renders correctly using snapshot 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <div>
-      Import Plan
-    </div>
+    Import Plan
   </button>
 </span>
 `;

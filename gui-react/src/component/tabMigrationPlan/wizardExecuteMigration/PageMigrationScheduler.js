@@ -60,22 +60,22 @@ export default class PageMigrationScheduler extends Component {
 
     return (
         <div className="form-horizontal">
-            <div class="form-group">
-                <label class="col-md-4 control-label" data-testid="testid_callback">Callback URL:</label>
-                <div class="col-md-8">
+            <div className="form-group">
+                <label className="col-md-4 control-label" data-testid="testid_callback">Callback URL:</label>
+                <div className="col-md-8">
                     <input type="text" name="callbackUrl" onChange={this.setCallbackUrl} value={this.props.callbackUrl}/>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-md-4 control-label">Run migration:</label>
-                <div class="col-md-8">
-                    <div class="radio">
+            <div className="form-group">
+                <label className="col-md-4 control-label">Run migration:</label>
+                <div className="col-md-8">
+                    <div className="radio">
                         <label data-testid="testid_syncMode">
                             <input type="radio" name="timeType" value="1" onClick={this.disableScheduleTime}/>
                             Now
                         </label>
                     </div>
-                    <div class="radio">
+                    <div className="radio">
                         <label data-testid="testid_asyncMode">
                             <input type="radio" name="timeType" value="2" onClick={this.enableScheduleTime}/>
                             Schedule

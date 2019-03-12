@@ -96,6 +96,7 @@ exports[`PageMapping renders correctly using snapshot 1`] = `
         </ul>
       </div>
     </div>
+    <br />
     <label>
       Target: 
       Mortgage_Process.MortgageApprovalProcess
@@ -185,6 +186,7 @@ exports[`PageMapping renders correctly using snapshot 1`] = `
         </ul>
       </div>
     </div>
+    <br />
     <button
       className="btn btn-primary"
       disabled={false}
@@ -198,7 +200,7 @@ exports[`PageMapping renders correctly using snapshot 1`] = `
     className="form-group"
   >
     <label>
-      Use below text field to update mappings directly, like delete a wrong mapping:
+      Use the text field below to update mappings directly (e.g. to delete an incorrect mapping)
     </label>
     <textarea
       className="form-control"
@@ -211,15 +213,16 @@ exports[`PageMapping renders correctly using snapshot 1`] = `
     className="form-group"
   >
     <button
-      className="btn btn-info"
+      className="btn btn-default"
       disabled={false}
       onClick={[Function]}
       type="button"
     >
       Show Source Diagram
     </button>
+     
     <button
-      className="btn btn-info"
+      className="btn btn-default"
       disabled={false}
       onClick={[Function]}
       type="button"

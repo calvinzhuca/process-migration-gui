@@ -5,15 +5,16 @@ exports[`PageMappingDiagrams renders correctly using snapshot 1`] = `
   className="form-group"
 >
   <button
-    className="btn btn-info"
+    className="btn btn-default"
     disabled={false}
     onClick={[MockFunction]}
     type="button"
   >
     Hide Source Diagram
   </button>
+   
   <button
-    className="btn btn-info"
+    className="btn btn-default"
     disabled={false}
     onClick={[MockFunction]}
     type="button"

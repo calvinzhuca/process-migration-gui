@@ -103,14 +103,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -209,14 +209,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -315,14 +315,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -421,14 +421,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -527,14 +527,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -633,14 +633,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -739,14 +739,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -845,14 +845,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -951,14 +951,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
@@ -1057,14 +1057,14 @@ exports[`MigrationPlansTable renders correctly using snapshot 1`] = `
         >
           <span>
             <button
-              className="btn btn-default"
+              className="btn btn-link"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <span
-                aria-hidden={true}
-                className="fa fa-play"
+                aria-hidden="true"
+                className="pficon pficon-export"
               />
             </button>
           </span>
