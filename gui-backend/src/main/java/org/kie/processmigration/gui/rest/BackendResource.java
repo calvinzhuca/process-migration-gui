@@ -1,5 +1,6 @@
 package org.kie.processmigration.gui.rest;
 
+import org.kie.processmigration.gui.service.WorkbenchServices;
 import org.kie.processmigration.gui.model.MigrationDefinition;
 import org.kie.processmigration.gui.model.Plan;
 import java.io.IOException;
@@ -15,23 +16,30 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.inject.Inject;
+import org.kie.processmigration.gui.service.KieService;
+import org.kie.processmigration.gui.service.PimService;
+import org.kie.processmigration.gui.service.impl.PimServiceImpl;
 
 @Path("/")
 public class BackendResource {
 
-    @GET
-    public Response get(@QueryParam("processId") String processId, @QueryParam("groupId") String groupId, @QueryParam("artifactId") String artifactId, @QueryParam("version") String version) throws IOException {
-        String result = BackendServiceImpl.getInfoJsonFromKjar(processId, groupId, artifactId, version);
-        return Response.ok(result).build();
-    }
+    @Inject
+    WorkbenchServices workbenchServices;
 
+    @Inject
+    KieService kieService;
+
+    @Inject
+    PimService pimService;
+    
     @GET
     @Path("/both")
-    public Response getBoth(
+    public Response getBothInfoJsonFromKjar(
             @QueryParam("sourceProcessId") String sourceProcessId, @QueryParam("sourceGroupId") String sourceGroupId, @QueryParam("sourceArtifactId") String sourceArtifactId, @QueryParam("sourceVersion") String sourceVersion,
             @QueryParam("targetProcessId") String targetProcessId, @QueryParam("targetGroupId") String targetGroupId, @QueryParam("targetArtifactId") String targetArtifactId, @QueryParam("targetVersion") String targetVersion
     ) throws IOException {
-        String result = BackendServiceImpl.getBothInfoJsonFromKjar(sourceProcessId, sourceGroupId, sourceArtifactId, sourceVersion,
+        String result = workbenchServices.getBothInfoJsonFromKjar(sourceProcessId, sourceGroupId, sourceArtifactId, sourceVersion,
                 targetProcessId, targetGroupId, targetArtifactId, targetVersion
         );
         return Response.ok(result).build();
@@ -39,31 +47,24 @@ public class BackendResource {
 
     @GET
     @Path("/instances")
-    public Response getAllRunningInstances(@QueryParam("containerId") String containerId
+    public Response getRunningInstances(@QueryParam("containerId") String containerId
     ) throws IOException, URISyntaxException {
-        System.out.println("getAllRunningInstances containerId " + containerId);
-        String result = BackendServiceImpl.getRunningInstancesFromKieServer(containerId);
-        System.out.println("getAllRunningInstances result " + result);
+        String result = kieService.getRunningInstances(containerId);
         return Response.ok(result).build();
     }
 
     @GET
     @Path("/plans")
     public Response pimServicesGetAllPlans() throws IOException, URISyntaxException {
-        System.out.println("pimServicesGetAllPlans ");
-        String result = PimServicesProxy.getAllPlans();
-        System.out.println("pimServicesGetAllPlans finished: " + result);
-        return Response.ok(result).build();
+            String result = pimService.getAllPlans();
+            return Response.ok(result).build();
     }
 
     @POST
     @Path("/plans")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response pimServicesCreatePlan(Plan plan) throws IOException, URISyntaxException {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!pimServicesCreatePlan " + plan);
-        System.out.println("!!!!!!!!!!!!!!!!!!!!pimServicesCreatePlan mappings" + plan.getMappings());
-        String result = PimServicesProxy.createPlan(plan);
-        System.out.println("pimServicesCreatePlan finished: " + result);
+        String result = pimService.createPlan(plan);
         return Response.ok(result).build();
     }
 
@@ -71,16 +72,35 @@ public class BackendResource {
     @Path("/plans/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response pimServicesUpdatePlan(Plan plan, @PathParam("id") String id) throws IOException, URISyntaxException {
-        String result = PimServicesProxy.updatePlan(plan, id);
+        String result = pimService.updatePlan(plan, id);
         return Response.ok(result).build();
     }
 
     @DELETE
     @Path("/plans/{id}")
     public Response pimServicesDeletePlan(@PathParam("id") String id) throws IOException, URISyntaxException {
-        System.out.println("pimServicesDeletePlan: " + id);
-        String result = PimServicesProxy.deletePlan(id);
-        System.out.println("pimServicesDeletePlan finished: " + result);
+        String result = pimService.deletePlan(id);
+        return Response.ok(result).build();
+    }
+
+    @GET
+    @Path("/migrations")
+    public Response pimServicesGetAllMigrations() throws IOException, URISyntaxException {
+        String result = pimService.getAllMigrations();
+        return Response.ok(result).build();
+    }
+
+    @GET
+    @Path("/migrations/{id}")
+    public Response pimServicesGetOneMigration(@PathParam("id") String id) throws IOException, URISyntaxException {
+        String result = pimService.getOneMigration(id);
+        return Response.ok(result).build();
+    }
+
+    @GET
+    @Path("/migrations/{id}/results")
+    public Response pimServicesGetOneMigrationLogs(@PathParam("id") String id) throws IOException, URISyntaxException {
+        String result = pimService.getOneMigrationLogs(id);
         return Response.ok(result).build();
     }
 
@@ -88,58 +108,23 @@ public class BackendResource {
     @Path("/migrations")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response pimServicesExecuteMigration(MigrationDefinition migration) throws IOException, URISyntaxException {
-        System.out.println("!!!!!!!!!!!!!!!pimServicesExecuteMigration: " + migration);
-        String result = PimServicesProxy.executeMigration(migration);
-        System.out.println("pimServicesExecuteMigration finished: " + result);
+        String result = pimService.executeMigration(migration);
         return Response.ok(result).build();
     }
 
-    @GET
-    @Path("/migrations")
-    public Response pimServicesGetAllMigrations() throws IOException, URISyntaxException {
-        System.out.println("pimServicesGetAllMigrations ");
-        String result = PimServicesProxy.getAllMigrations();
-        System.out.println("pimServicesGetAllMigrations finished: " + result);
-        return Response.ok(result).build();
-    }
-
-    @GET
-    @Path("/migrations/{id}")
-    public Response pimServicesGetOneMigration(@PathParam("id") String id) throws IOException, URISyntaxException {
-        System.out.println("pimServicesGetOneMigration: " + id);
-        String result = PimServicesProxy.getOneMigration(id);
-        System.out.println("pimServicesGetOneMigration finished: " + result);
-        return Response.ok(result).build();
-    }    
-    
-    @GET
-    @Path("/migrations/{id}/results")
-    public Response pimServicesGetOneMigrationLogs(@PathParam("id") String id) throws IOException, URISyntaxException {
-        System.out.println("pimServicesGetOneMigrationLogs: " + id);
-        String result = PimServicesProxy.getOneMigrationLogs(id);
-        System.out.println("pimServicesGetOneMigrationLogs finished: " + result);
-        return Response.ok(result).build();
-    }     
-    
-    
-    @DELETE
-    @Path("/migrations/{id}")
-    public Response pimServicesDeleteMigration(@PathParam("id") String id) throws IOException, URISyntaxException {
-        System.out.println("pimServicesDeleteMigration: " + id);
-        String result = PimServicesProxy.deleteMigration(id);
-        System.out.println("pimServicesDeleteMigration finished: " + result);
-        return Response.ok(result).build();
-    }    
-    
-    
     @PUT
     @Path("/migrations/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response pimServicesUpdateMigration(MigrationDefinition migration, @PathParam("id") String id) throws IOException, URISyntaxException {
-        System.out.println("pimServicesUpdateMigration id: " + id);
-        System.out.println("pimServicesUpdateMigration migration: " + migration);
-        String result = PimServicesProxy.updateMigration(migration, id);
-        System.out.println("pimServicesUpdatePlan finished: " + result);
+        String result = pimService.updateMigration(migration, id);
         return Response.ok(result).build();
-    }    
+    }
+    
+    @DELETE
+    @Path("/migrations/{id}")
+    public Response pimServicesDeleteMigration(@PathParam("id") String id) throws IOException, URISyntaxException {
+        String result = pimService.deleteMigration(id);
+        return Response.ok(result).build();
+    }
+
 }

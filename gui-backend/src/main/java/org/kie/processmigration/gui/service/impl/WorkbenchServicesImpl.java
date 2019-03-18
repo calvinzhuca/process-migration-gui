@@ -1,19 +1,16 @@
-package org.kie.processmigration.gui.rest;
+package org.kie.processmigration.gui.service.impl;
 
+import org.kie.processmigration.gui.service.WorkbenchServices;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.kie.processmigration.gui.model.ProcessInfos;
 import org.kie.processmigration.gui.model.ProcessInfo;
-import org.kie.processmigration.gui.model.ProcessInstanceList;
-import org.kie.processmigration.gui.model.ProcessInstanceList.ProcessInstance;
-import org.kie.processmigration.gui.model.RunningInstance;
 
 import java.io.File;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -21,6 +18,7 @@ import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Logger;
+import javax.enterprise.context.ApplicationScoped;
 
 import org.eclipse.aether.artifact.Artifact;
 import org.kie.api.KieServices;
@@ -32,32 +30,25 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.JDOMException;
+import org.kie.processmigration.gui.model.BpmNode;
 
+@ApplicationScoped
+public class WorkbenchServicesImpl implements WorkbenchServices {
 
-
-/*
-import org.apache.batik.util.XMLResourceDescriptor;
-import org.apache.batik.bridge.DocumentLoader;
-import org.apache.batik.bridge.GVTBuilder;
-import org.apache.batik.bridge.UserAgent;
-import org.apache.batik.bridge.UserAgentAdapter;
-import org.apache.batik.gvt.GraphicsNode;
-import org.apache.batik.bridge.BridgeContext;
- */
-public class BackendServiceImpl {
-
-    private static Logger logger = Logger.getLogger(BackendServiceImpl.class.getName());
+    private static Logger logger = Logger.getLogger(WorkbenchServicesImpl.class.getName());
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
 
-    public static String getInfoJsonFromKjar(String processId, String groupId, String artifactId, String version) throws IOException {
+    @Override
+    public String getInfoJsonFromKjar(String processId, String groupId, String artifactId, String version) throws IOException {
         ProcessInfo info = getInfoFromKjar(processId, groupId, artifactId, version);
 
         return gson.toJson(info);
     }
 
-    public static String getBothInfoJsonFromKjar(String sourceProcessId, String sourceGroupId, String sourceArtifactId, String sourceVersion, String targetProcessId, String targetGroupId, String targetArtifactId, String targetVersion) throws IOException {
+    @Override
+    public String getBothInfoJsonFromKjar(String sourceProcessId, String sourceGroupId, String sourceArtifactId, String sourceVersion, String targetProcessId, String targetGroupId, String targetArtifactId, String targetVersion) throws IOException {
         ProcessInfos bothInfo = new ProcessInfos();
 
         ProcessInfo sourceInfo = getInfoFromKjar(sourceProcessId, sourceGroupId, sourceArtifactId, sourceVersion);
@@ -69,7 +60,7 @@ public class BackendServiceImpl {
         return gson.toJson(bothInfo);
     }
 
-    public static ProcessInfo getInfoFromKjar(String processId, String groupId, String artifactId, String version) throws IOException {
+    private static ProcessInfo getInfoFromKjar(String processId, String groupId, String artifactId, String version) throws IOException {
         ProcessInfo info = new ProcessInfo();
         info.setProcessId(processId);
         info.setContainerId(artifactId + "_" + version);
@@ -77,7 +68,7 @@ public class BackendServiceImpl {
         return info;
     }
 
-    public static void retriveProcessInfoFromKjar(String groupId, String artifactId, String version, ProcessInfo info) throws IOException {
+    private static void retriveProcessInfoFromKjar(String groupId, String artifactId, String version, ProcessInfo info) throws IOException {
         //System.out.println("######################################retriveProcessInfoFromKjar started, isV1 " + isV1);
         KieServices ks = (KieServicesImpl) KieServices.Factory.get();
 
@@ -137,9 +128,6 @@ public class BackendServiceImpl {
             }
         }
         jarFile.close();
-        //System.out.println("######################################retriveProcessInfoFromKjar ended ");
-
-        //return info;
     }
 
     private static void fromBpmNodesToStrings(ProcessInfo info) {
@@ -194,17 +182,5 @@ public class BackendServiceImpl {
 
 
 
-    public static String getRunningInstancesFromKieServer(String containerId) throws URISyntaxException {
-        ProcessInstanceList instanceList = ServicesUtil.getKieService().getRunningInstances(containerId);
-        List<ProcessInstance> instances= instanceList.getProcessInstance();
-        int i = 0;
-        List<RunningInstance> result = new ArrayList<RunningInstance>();
-        for (ProcessInstance instance: instances){
-            i ++;
-            result.add(new RunningInstance(i, instance));
-        }
-        return gson.toJson(result);
-    }
 
- 
 }

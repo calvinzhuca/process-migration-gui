@@ -1,4 +1,4 @@
-package org.kie.processmigration.gui.rest;
+package org.kie.processmigration.gui.service;
 
 import org.kie.processmigration.gui.model.ProcessInstanceList;
 import javax.ws.rs.Consumes;
@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 
-public interface KieService {
+public interface KieServiceProxy {
 
     @GET
     @Path("/services/rest/server/containers/{containerId}/processes/instances")

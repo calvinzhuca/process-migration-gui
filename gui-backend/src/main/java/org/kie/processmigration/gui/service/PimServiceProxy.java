@@ -1,4 +1,4 @@
-package org.kie.processmigration.gui.rest;
+package org.kie.processmigration.gui.service;
 
 import org.kie.processmigration.gui.model.MigrationDefinition;
 import org.kie.processmigration.gui.model.Plan;
@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 
-public interface PimService {
+public interface PimServiceProxy {
 
     @GET
     @Path("/plans")

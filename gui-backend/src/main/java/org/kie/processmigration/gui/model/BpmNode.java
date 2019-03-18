@@ -1,4 +1,4 @@
-package org.kie.processmigration.gui.rest;
+package org.kie.processmigration.gui.model;
 
 public class BpmNode {
 

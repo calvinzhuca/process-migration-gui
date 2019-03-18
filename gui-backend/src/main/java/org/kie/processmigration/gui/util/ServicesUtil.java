@@ -1,5 +1,7 @@
-package org.kie.processmigration.gui.rest;
+package org.kie.processmigration.gui.util;
 
+import org.kie.processmigration.gui.service.PimServiceProxy;
+import org.kie.processmigration.gui.service.KieServiceProxy;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -107,7 +109,7 @@ public class ServicesUtil {
     }    
 
 
-    public static KieService getKieService() throws URISyntaxException {
+    public static KieServiceProxy getKieService() throws URISyntaxException {
         boolean useOcpCertificate = false;
         ResteasyClient client = createRestClientWithCerts(useOcpCertificate);
 
@@ -116,12 +118,12 @@ public class ServicesUtil {
         //System.out.println("kieService URL: " + url);
         ResteasyWebTarget webTarget = client.target(url);
         webTarget.register(new BasicAuthentication(getKieUsername(), getKiePassword()));
-        return webTarget.proxy(KieService.class);
+        return webTarget.proxy(KieServiceProxy.class);
     }
 
     
 
-    public static PimService getPimService() throws URISyntaxException {
+    public static PimServiceProxy getPimService() throws URISyntaxException {
         boolean useOcpCertificate = false;
         ResteasyClient client = createRestClientWithCerts(useOcpCertificate);
 
@@ -129,7 +131,7 @@ public class ServicesUtil {
         String url = uriBuilder.build().toString();
         ResteasyWebTarget webTarget = client.target(url);
         webTarget.register(new BasicAuthentication(pimUsername, pimPassword));
-        return webTarget.proxy(PimService.class);
+        return webTarget.proxy(PimServiceProxy.class);
     }
 
     private static URIBuilder getPimUriBuilder(Object... path) {

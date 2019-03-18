@@ -1,6 +1,5 @@
 package org.kie.processmigration.gui.model;
 
-import org.kie.processmigration.gui.rest.BpmNode;
 import java.util.ArrayList;
 
 public class ProcessInfo {
