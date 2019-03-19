@@ -19,7 +19,7 @@ public class KieServiceImpl implements KieService{
 
     @Override
     public String getRunningInstances(String containerId) throws URISyntaxException {
-        ProcessInstanceList instanceList = ServicesUtil.getKieService().getRunningInstances(containerId);
+        ProcessInstanceList instanceList = ServicesUtil.getKieServiceProxy().getRunningInstances(containerId);
         List<ProcessInstanceList.ProcessInstance> instances= instanceList.getProcessInstance();
         int i = 0;
         List<RunningInstance> result = new ArrayList<RunningInstance>();

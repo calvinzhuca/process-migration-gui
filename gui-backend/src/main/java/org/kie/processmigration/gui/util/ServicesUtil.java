@@ -109,7 +109,7 @@ public class ServicesUtil {
     }    
 
 
-    public static KieServiceProxy getKieService() throws URISyntaxException {
+    public static KieServiceProxy getKieServiceProxy() throws URISyntaxException {
         boolean useOcpCertificate = false;
         ResteasyClient client = createRestClientWithCerts(useOcpCertificate);
 
@@ -123,7 +123,7 @@ public class ServicesUtil {
 
     
 
-    public static PimServiceProxy getPimService() throws URISyntaxException {
+    public static PimServiceProxy getPimServiceProxy() throws URISyntaxException {
         boolean useOcpCertificate = false;
         ResteasyClient client = createRestClientWithCerts(useOcpCertificate);
 
