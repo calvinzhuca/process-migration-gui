@@ -105,7 +105,8 @@ exports[`PageDefinition renders correctly using snapshot 1`] = `
     onClick={[Function]}
     type="button"
   >
-     Copy Source To Target
+     
+    Copy Source To Target
   </button>
   <p />
   <div>

@@ -99,6 +99,7 @@ export default class MigrationDefinitions extends Component {
   retriveMigrationDefinitions = () => {
     const input = document.getElementById("id_migrationsDefinitions_input1");
     if (
+      input != null &&
       input.value != null &&
       input.value != "" &&
       !validator.isNumeric(input.value)

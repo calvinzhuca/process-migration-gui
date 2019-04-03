@@ -4,7 +4,7 @@
   <groupId>org.kie</groupId>
   <artifactId>process-migration-gui</artifactId>
   <name>Process Instance Migration GUI</name>
-  <version>1.0.0</version>
+  <version>${pimversion}</version>
   <packaging>pom</packaging>
 
     <modules>
@@ -12,4 +12,7 @@
         <module>gui-backend</module>     
     </modules>
  
+  <properties>
+    <pimversion>1.0.0</pimversion>
+  </properties>
 </project>

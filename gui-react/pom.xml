@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.kie</groupId>
         <artifactId>process-migration-gui</artifactId>
-        <version>1.0.0</version>
+        <version>${pimversion}</version>
     </parent>
 
   <groupId>org.kie</groupId>
