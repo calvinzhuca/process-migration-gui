@@ -7,7 +7,6 @@ import * as resolve from "table-resolver";
 import { compose } from "recompose";
 
 import {
-  actionHeaderCellFormatter,
   customHeaderFormattersDefinition,
   defaultSortingOrder,
   selectionCellFormatter,
@@ -234,7 +233,7 @@ export default class PageMigrationRunningInstances extends React.Component {
   onPageInput = e => {
     this.setState({ pageChangeValue: e.target.value });
   };
-  onPerPageSelect = (eventKey, e) => {
+  onPerPageSelect = eventKey => {
     const newPaginationState = Object.assign({}, this.state.pagination);
     newPaginationState.perPage = eventKey;
     newPaginationState.page = 1;
@@ -245,7 +244,7 @@ export default class PageMigrationRunningInstances extends React.Component {
       this.setPage(this.state.pagination.page - 1);
     }
   };
-  onRow = (row, { rowIndex }) => {
+  onRow = row => {
     const { selectedRows } = this.state;
     const selected = selectedRows.indexOf(row.id) > -1;
     return {

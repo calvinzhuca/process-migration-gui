@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Button } from "patternfly-react";
 import { Table } from "patternfly-react";
 import { Icon } from "patternfly-react";
 import { actionHeaderCellFormatter } from "patternfly-react";

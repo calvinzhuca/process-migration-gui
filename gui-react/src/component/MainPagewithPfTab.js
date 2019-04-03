@@ -8,12 +8,7 @@ import {
   TabPane,
   TabContent
 } from "patternfly-react";
-import {
-  DropdownButton,
-  MenuItem,
-  SplitButton,
-  select
-} from "patternfly-react";
+import { DropdownButton, MenuItem } from "patternfly-react";
 
 import MigrationPlans from "./tabMigrationPlan/MigrationPlans";
 import MigrationDefinitions from "./tabMigration/MigrationDefinitions";

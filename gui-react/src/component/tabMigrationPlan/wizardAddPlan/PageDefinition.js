@@ -107,7 +107,7 @@ export default class PageDefinition extends Component {
     //console.log('this.state.sourceProcessId ' + this.state.sourceProcessId);
     //console.log('this.state.targetProcessId ' + this.state.targetProcessId);
     if (USE_MOCK_DATA) {
-      console.log("retriveBothInfo use mock data ");
+      //console.log("retriveBothInfo use mock data ");
       const mockData = Mockup_processMapping_Info;
       this.props.setInfo(mockData.sourceInfo, mockData.targetInfo);
 
@@ -123,27 +123,26 @@ export default class PageDefinition extends Component {
       var ev = new Event("input", { bubbles: true });
       input.dispatchEvent(ev);
 
-      var input = document.getElementById("hiddenField_targetContainerId");
-      var containerId =
-        this.state.targetProcessId + "_" + this.state.targetVersion;
-      var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+      input = document.getElementById("hiddenField_targetContainerId");
+      containerId = this.state.targetProcessId + "_" + this.state.targetVersion;
+      nativeInputValueSetter = Object.getOwnPropertyDescriptor(
         window.HTMLInputElement.prototype,
         "value"
       ).set;
       nativeInputValueSetter.call(input, containerId);
       //once fired the event, this currentInputValue will be saved in the wizard form's values
-      var ev = new Event("input", { bubbles: true });
+      ev = new Event("input", { bubbles: true });
       input.dispatchEvent(ev);
 
       input = document.getElementById("hiddenField_targetProcessId");
       var processId = this.state.targetProcessId;
-      var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+      nativeInputValueSetter = Object.getOwnPropertyDescriptor(
         window.HTMLInputElement.prototype,
         "value"
       ).set;
       nativeInputValueSetter.call(input, processId);
       //once fired the event, this currentInputValue will be saved in the wizard form's values
-      var ev = new Event("input", { bubbles: true });
+      ev = new Event("input", { bubbles: true });
       input.dispatchEvent(ev);
     } else {
       const servicesUrl = BACKEND_URL + "/both";
@@ -177,27 +176,27 @@ export default class PageDefinition extends Component {
           var ev = new Event("input", { bubbles: true });
           input.dispatchEvent(ev);
 
-          var input = document.getElementById("hiddenField_targetContainerId");
-          var containerId =
+          input = document.getElementById("hiddenField_targetContainerId");
+          containerId =
             this.state.targetProcessId + "_" + this.state.targetVersion;
-          var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+          nativeInputValueSetter = Object.getOwnPropertyDescriptor(
             window.HTMLInputElement.prototype,
             "value"
           ).set;
           nativeInputValueSetter.call(input, containerId);
           //once fired the event, this currentInputValue will be saved in the wizard form's values
-          var ev = new Event("input", { bubbles: true });
+          ev = new Event("input", { bubbles: true });
           input.dispatchEvent(ev);
 
           input = document.getElementById("hiddenField_targetProcessId");
           var processId = this.state.targetProcessId;
-          var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+          nativeInputValueSetter = Object.getOwnPropertyDescriptor(
             window.HTMLInputElement.prototype,
             "value"
           ).set;
           nativeInputValueSetter.call(input, processId);
           //once fired the event, this currentInputValue will be saved in the wizard form's values
-          var ev = new Event("input", { bubbles: true });
+          ev = new Event("input", { bubbles: true });
           input.dispatchEvent(ev);
         });
     }

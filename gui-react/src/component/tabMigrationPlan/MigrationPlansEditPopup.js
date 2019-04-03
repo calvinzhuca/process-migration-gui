@@ -27,8 +27,8 @@ export default class MigrationPlansEditPopup extends React.Component {
       this.props.retrieveAllPlans();
     } else {
       //this component is used as "Export Plan"
-      var input = document.getElementById("planEditArea");
-      var value = input.value;
+      input = document.getElementById("planEditArea");
+      value = input.value;
       navigator.clipboard.writeText(value);
     }
     this.setState({ showEditPlanPopup: false });

@@ -9,7 +9,8 @@ export default class PageMigrationScheduler extends Component {
     //this.disableScheduleTime();
     this.state = {
       dateTimeInput: true,
-      validationMessage: ""
+      validationMessageUrl: "",
+      validationMessageTime: ""
     };
   }
 
@@ -20,23 +21,23 @@ export default class PageMigrationScheduler extends Component {
       //console.log("input is valid URL: " + inputUrl);
       this.props.setCallbackUrl(inputUrl);
       this.setState({
-        validationMessage: ""
+        validationMessageUrl: ""
       });
     } else if (inputUrl == "") {
       this.setState({
-        validationMessage: ""
+        validationMessageUrl: ""
       });
     } else {
       //console.log("input is not valid URL: " + inputUrl);
       this.props.setCallbackUrl("");
       this.setState({
-        validationMessage: "Error: Callback input is not a valid URL."
+        validationMessageUrl: "Error: Callback input is not a valid URL."
       });
     }
   };
 
   disableScheduleTime = () => {
-    console.log("disable scheduleTime");
+    //console.log("disable scheduleTime");
     //        var scheduleTime = document.getElementById("PageMigrationScheduler_scheduleTime")
     //        console.log('disable scheduleTime' + scheduleTime.value);
     //        scheduleTime.disabled = true;
@@ -49,7 +50,7 @@ export default class PageMigrationScheduler extends Component {
   };
 
   enableScheduleTime = () => {
-    console.log("enable scheduleTime");
+    //console.log("enable scheduleTime");
     //document.getElementById("PageMigrationScheduler_scheduleTime").disabled = false;
     this.setState({
       dateTimeInput: true
@@ -58,15 +59,20 @@ export default class PageMigrationScheduler extends Component {
 
   handleDateTimeInput = inputMoment => {
     if (moment(inputMoment, "YYYY-MM-DDTHH:mm:ss", true).isValid()) {
-      console.log("handleDateTimeInput, valid moment: " + inputMoment.toDate());
+      //console.log("handleDateTimeInput, valid moment: " + inputMoment.toDate());
       //        this.props.setScheduleStartTime(inputMoment.format("YYYY/MM/DD hh:mm:ss a"));
       //2019-01-30T13:00:00-05:00        this.props.setScheduleStartTime(inputMoment.format(moment.ISO_DATE_TIME));
       //2019-01-30T18:00:00.000Z         this.props.setScheduleStartTime(inputMoment.toISOString());
       //2019-01-30T18:00:00.000Z            this.props.setScheduleStartTime(inputMoment.toDate());
       this.props.setScheduleStartTime(inputMoment.toDate());
+      this.setState({
+        validationMessageTime: ""
+      });
     } else {
-      //just ignore the user input
-      console.log("handleDateTimeInput, not valid moment: " + inputMoment);
+      //console.log("handleDateTimeInput, not valid moment: " + inputMoment);
+      this.setState({
+        validationMessageTime: "Error: not valid time"
+      });
     }
   };
 
@@ -136,7 +142,12 @@ export default class PageMigrationScheduler extends Component {
 
         <div className="form-group">
           <b>
-            <div className="col-md-8">{this.state.validationMessage}</div>
+            <div className="col-md-8">{this.state.validationMessageUrl}</div>
+          </b>
+        </div>
+        <div className="form-group">
+          <b>
+            <div className="col-md-8">{this.state.validationMessageTime}</div>
           </b>
         </div>
       </div>

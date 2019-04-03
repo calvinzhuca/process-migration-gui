@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 
 import { Button } from "patternfly-react";
 import { Icon } from "patternfly-react";
@@ -42,7 +41,7 @@ export default class MigrationPlans extends MigrationPlansBase {
   };
 
   openAddPlanWizardwithInitialData = rowData => {
-    console.log("openAddPlanWizardwithInitialData name: " + rowData.name);
+    //console.log("openAddPlanWizardwithInitialData name: " + rowData.name);
     this.resetAllStates();
     this.setState({ showPlanWizard: true });
     this.refs.WizardAddPlanChild.initialWizardStates(rowData);
@@ -54,7 +53,7 @@ export default class MigrationPlans extends MigrationPlansBase {
   };
 
   onFilterChange = planFilter => {
-    console.log("onFilterChange: " + planFilter);
+    //console.log("onFilterChange: " + planFilter);
 
     let filteredPlans = this.state.plans;
     filteredPlans = filteredPlans.filter(plan => {

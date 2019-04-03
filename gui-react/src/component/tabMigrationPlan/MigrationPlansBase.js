@@ -27,23 +27,19 @@ export default class MigrationPlansBase extends React.Component {
     this.retrieveAllPlans();
   }
 
-  retrieveAllPlans1 = () => {
-    console.log("fake retrive all plans");
-  };
-
   retrieveAllPlans = () => {
     if (USE_MOCK_DATA) {
-      console.log("retrieveAllPlans useing mock data: ");
+      //console.log("retrieveAllPlans useing mock data: ");
       const plans = MockupData_planList;
       this.setState({ plans, filteredPlans: plans });
     } else {
       const servicesUrl = BACKEND_URL + "/plans";
-      console.log("retrieveAllPlans servicesUrl: " + servicesUrl);
+      //console.log("retrieveAllPlans servicesUrl: " + servicesUrl);
       axios.get(servicesUrl, {}).then(res => {
         const plans = res.data;
         //console.log('retrieveAllPlans ' + JSON.stringify(plans));
         this.setState({ plans, filteredPlans: plans });
-        console.log("retrieveAllPlans is done ");
+        //console.log("retrieveAllPlans is done ");
       });
     }
   };
@@ -53,7 +49,7 @@ export default class MigrationPlansBase extends React.Component {
       showDeleteConfirmation: true,
       deletePlanId: id
     });
-    console.log("deletePlanId " + id);
+    //console.log("deletePlanId " + id);
   };
 
   hideDeleteDialog = () => {
@@ -70,7 +66,7 @@ export default class MigrationPlansBase extends React.Component {
       //need to create a temp variable "self" to store this, so I can invoke this inside axios call
       const self = this;
       const serviceUrl = BACKEND_URL + "/plans/" + this.state.deletePlanId;
-      console.log("delete url: " + serviceUrl);
+      //console.log("delete url: " + serviceUrl);
 
       axios
         .delete(serviceUrl, {
@@ -78,13 +74,10 @@ export default class MigrationPlansBase extends React.Component {
             "Content-Type": "application/json"
           }
         })
-        .then(function(response) {
-          console.log("delete response: " + response.data);
+        .then(function() {
+          //console.log("delete response: " + response.data);
           self.retrieveAllPlans();
           self.hideDeleteDialog();
-        })
-        .catch(function(error) {
-          console.log("error: " + error);
         });
     }
   };
@@ -102,11 +95,11 @@ export default class MigrationPlansBase extends React.Component {
         //console.log('submit plan' + plan);
 
         //step 1, replace all \" to "
-        plan = plan.replace(/\\\"/g, '"');
+        plan = plan.replace(/\\"/g, '"');
         //console.log('submit plan1: ' + plan);
         //step 2, replace "{ to {
         plan = plan.replace('"{', "{");
-        console.log("plan2: " + plan);
+        //console.log("plan2: " + plan);
         //step3, replace }" to }
         plan = plan.replace('}"', "}");
       }
@@ -114,7 +107,7 @@ export default class MigrationPlansBase extends React.Component {
       //need to create a temp variable "self" to store this, so I can invoke this inside axios call
       const self = this;
       const servicsUrl = BACKEND_URL + "/plans";
-      console.log("servicsUrl: " + servicsUrl);
+      //console.log("servicsUrl: " + servicsUrl);
       axios
         .post(servicsUrl, plan, {
           headers: {
@@ -125,16 +118,12 @@ export default class MigrationPlansBase extends React.Component {
           }
         })
         .then(function(response) {
-          console.log("addPlan response: " + response.data);
+          //console.log("addPlan response: " + response.data);
           self.setState({
             addPlanResponseJsonStr: JSON.stringify(response.data, null, 2)
           });
           self.retrieveAllPlans();
-        })
-        .catch(function(error) {
-          console.log("addPlan error: " + error);
         });
-      //window.alert("submitted this plan" + plan);
     }
   };
 
@@ -145,8 +134,8 @@ export default class MigrationPlansBase extends React.Component {
       //need to create a temp variable "self" to store this, so I can invoke this inside axios call
       const self = this;
       const serviceUrl = BACKEND_URL + "/plans/" + planId;
-      console.log("serviceUrl: " + serviceUrl);
-      console.log("edit plan: " + plan);
+      //console.log("serviceUrl: " + serviceUrl);
+      //console.log("edit plan: " + plan);
       axios
         .put(serviceUrl, plan, {
           headers: {
@@ -154,14 +143,11 @@ export default class MigrationPlansBase extends React.Component {
           }
         })
         .then(function(response) {
-          console.log("editPlan response: " + response.data);
+          //console.log("editPlan response: " + response.data);
           self.setState({
             addPlanResponseJsonStr: JSON.stringify(response.data, null, 2)
           });
           self.retrieveAllPlans();
-        })
-        .catch(function(error) {
-          console.log("editPlan error: " + error);
         });
     }
   };

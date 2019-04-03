@@ -1,6 +1,5 @@
-import renderer from "react-test-renderer";
 import React from "react";
-import { render, fireEvent, cleanup } from "react-testing-library";
+import { render, cleanup } from "react-testing-library";
 import PageMigrationScheduler from "../../component/tabMigrationPlan/wizardExecuteMigration/PageMigrationScheduler.js";
 
 // automatically unmount and cleanup DOM after the test is finished.

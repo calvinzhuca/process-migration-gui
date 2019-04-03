@@ -41,20 +41,14 @@ export default class PageMapping extends Component {
   }
 
   handleSourceDiagramButtonClick = () => {
-    console.log(
-      "handleSourceDiagramButtonClick sourceDiagramshown " +
-        this.state.sourceDiagramshown
-    );
+    //console.log(" sourceDiagramshown " + this.state.sourceDiagramshown);
     this.setState({
       sourceDiagramshown: !this.state.sourceDiagramshown
     });
   };
 
   handleTargetDiagramButtonClick = () => {
-    console.log(
-      "handleTargetDiagramButtonClick targetDiagramshown " +
-        this.state.targetDiagramshown
-    );
+    //console.log("targetDiagramshown " + this.state.targetDiagramshown);
     this.setState({
       targetDiagramshown: !this.state.targetDiagramshown
     });
@@ -99,10 +93,7 @@ export default class PageMapping extends Component {
         '"' +
         this.state.targetNodeStr +
         '"';
-      console.log(
-        "handleMapButtonClick currentNodeMapping1 ",
-        currentNodeMapping
-      );
+      //console.log("currentNodeMapping1 ", currentNodeMapping);
 
       var input = document.getElementById("nodeMappingField");
       var currentInputValue = input.value;
@@ -151,8 +142,8 @@ export default class PageMapping extends Component {
       const targetValues = this.props.targetInfo.values;
       const targetLabels = this.props.targetInfo.labels;
       const targetNode = [];
-      for (var i = 0; i < targetValues.length; i++) {
-        targetNode.push({ value: targetValues[i], label: targetLabels[i] });
+      for (var j = 0; j < targetValues.length; j++) {
+        targetNode.push({ value: targetValues[j], label: targetLabels[j] });
       }
 
       return (

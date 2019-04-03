@@ -16,7 +16,7 @@ export default class PageReview extends Component {
     return (
       <div>
         <div className="form-group">
-          <Button onClick={e => this.onDownloadClick()}>Export</Button>
+          <Button onClick={this.onDownloadClick}>Export</Button>
           <pre>{this.props.inputJsonStr}</pre>
           <a id="downloadAnchorElem" style={{ display: "none" }} />
         </div>

@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  DropdownButton,
-  MenuItem,
-  SplitButton,
-  select
-} from "patternfly-react";
+import { DropdownButton, MenuItem } from "patternfly-react";
 
 export default class PageMappingDropdownNode extends React.Component {
   constructor(props) {

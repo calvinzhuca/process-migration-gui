@@ -1,5 +1,3 @@
-import React from "react";
-
 export const MockupData_Migrations_Logs = [
   {
     id: 1,

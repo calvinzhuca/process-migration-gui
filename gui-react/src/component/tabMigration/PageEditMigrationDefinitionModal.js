@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import axios from "axios";
 
 import { Button } from "patternfly-react";
@@ -85,7 +84,7 @@ export default class PageEditMigrationDefinitionModal extends React.Component {
 
   submit = () => {
     if (USE_MOCK_DATA) {
-      console.log("editMigration use mock data: ");
+      //console.log("editMigration use mock data: ");
       this.hideEditDialog();
       //this.retriveMigrationDefinitions();
     } else {
@@ -102,9 +101,9 @@ export default class PageEditMigrationDefinitionModal extends React.Component {
             "Content-Type": "application/json"
           }
         })
-        .then(res => {
-          const results = res.data;
-          console.log("editMigration " + JSON.stringify(results));
+        .then(() => {
+          //const results = res.data;
+          //console.log("editMigration " + JSON.stringify(results));
           self.hideEditDialog();
           // self.retriveMigrationDefinitions();
         });

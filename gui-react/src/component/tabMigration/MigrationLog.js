@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Button } from "patternfly-react";
 
 export default class MigrationLog extends Component {
   render() {

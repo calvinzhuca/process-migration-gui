@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 
 import { Wizard } from "patternfly-react";
@@ -50,7 +50,7 @@ export default class WizardExecuteMigration extends WizardBase {
 
   onSubmitMigrationPlan = () => {
     if (USE_MOCK_DATA) {
-      console.log("onSubmitMigrationPlan, using mock data: ");
+      //console.log("onSubmitMigrationPlan, using mock data: ");
       this.setState({
         pimServiceResponseJsonStr: JSON.stringify(
           MockupData_PIM_response,
@@ -61,14 +61,14 @@ export default class WizardExecuteMigration extends WizardBase {
       this.onNextButtonClick();
     } else {
       const plan = this.state.migrationDefinitionJsonStr;
-      console.log("onSubmitMigrationPlan: " + plan);
+      //console.log("onSubmitMigrationPlan: " + plan);
 
       //need to create a temp variable "self" to store this, so I can invoke this inside axios call
       const self = this;
 
       const serviceUrl = BACKEND_URL + "/migrations";
-      console.log("onSubmitMigrationPlan: " + serviceUrl);
-      console.log("onSubmitMigrationPlan plan: " + plan);
+      //console.log("onSubmitMigrationPlan: " + serviceUrl);
+      //console.log("onSubmitMigrationPlan plan: " + plan);
       axios
         .post(serviceUrl, plan, {
           headers: {
@@ -76,16 +76,11 @@ export default class WizardExecuteMigration extends WizardBase {
           }
         })
         .then(function(response) {
-          console.log(
-            "onSubmitMigrationPlan response: " + JSON.stringify(response.data)
-          );
+          //console.log("onSubmitMigrationPlan response: " + JSON.stringify(response.data));
           self.setState({
             pimServiceResponseJsonStr: JSON.stringify(response.data, null, 2)
           });
           self.onNextButtonClick();
-        })
-        .catch(function(error) {
-          console.log("onSubmitMigrationPlan error: " + error);
         });
     }
   };
@@ -151,11 +146,7 @@ export default class WizardExecuteMigration extends WizardBase {
   render() {
     const { activeStepIndex, activeSubStepIndex } = this.state;
 
-    const renderExecuteMigrationWizardContents = (
-      wizardSteps,
-      state,
-      setInfo
-    ) => {
+    const renderExecuteMigrationWizardContents = wizardSteps => {
       //        const { activeStepIndex, activeSubStepIndex} = state;
       return wizardSteps.map((step, stepIndex) =>
         step.subSteps.map((sub, subStepIndex) => {
