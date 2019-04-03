@@ -6,9 +6,7 @@ import PageViewMigrationLogs from "../../component/tabMigration/PageViewMigratio
 test("PageViewMigrationLogs renders correctly using snapshot", () => {
   const mockData = MockupData_Migrations_Logs;
   const tree = renderer
-    .create(
-      <PageViewMigrationLogs migrationLogs={mockData} />
-    )
+    .create(<PageViewMigrationLogs migrationLogs={mockData} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

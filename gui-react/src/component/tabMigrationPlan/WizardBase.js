@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class WizardBase extends React.Component {
-
   onBackButtonClick = () => {
     const { steps } = this.props;
     const { activeStepIndex, activeSubStepIndex } = this.state;
@@ -14,7 +13,8 @@ export default class WizardBase extends React.Component {
     } else if (activeStepIndex > 0) {
       this.setState(prevState => ({
         activeStepIndex: prevState.activeStepIndex - 1,
-        activeSubStepIndex: steps[prevState.activeStepIndex - 1].subSteps.length - 1
+        activeSubStepIndex:
+          steps[prevState.activeStepIndex - 1].subSteps.length - 1
       }));
     }
   };
@@ -36,7 +36,6 @@ export default class WizardBase extends React.Component {
     this.convertFormDataToJson();
   };
 
-
   onStepClick = stepIndex => {
     if (stepIndex === this.state.activeStepIndex) {
       return;
@@ -50,7 +49,6 @@ export default class WizardBase extends React.Component {
     return false;
   }
 }
-
 
 WizardBase.propTypes = {
   /** Initial step index */

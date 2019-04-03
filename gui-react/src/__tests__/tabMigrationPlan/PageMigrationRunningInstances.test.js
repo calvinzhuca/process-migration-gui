@@ -1,7 +1,7 @@
-import renderer from 'react-test-renderer';
-import React from 'react';
+import renderer from "react-test-renderer";
+import React from "react";
 import PageMigrationRunningInstances from "../../component/tabMigrationPlan/wizardExecuteMigration/PageMigrationRunningInstances";
-import { MockupData_runningInstances } from '../../component/common/MockupData';
+import { MockupData_runningInstances } from "../../component/common/MockupData";
 
 test("PageMigrationRunningInstances renders correctly using snapshot", () => {
   const instances = MockupData_runningInstances;

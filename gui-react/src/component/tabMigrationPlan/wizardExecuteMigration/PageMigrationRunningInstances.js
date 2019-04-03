@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { orderBy } from 'lodash';
-import classNames from 'classnames';
-import * as sort from 'sortabular';
-import * as resolve from 'table-resolver';
-import { compose } from 'recompose';
+import { orderBy } from "lodash";
+import classNames from "classnames";
+import * as sort from "sortabular";
+import * as resolve from "table-resolver";
+import { compose } from "recompose";
 
 import {
   actionHeaderCellFormatter,
@@ -16,9 +16,9 @@ import {
   tableCellFormatter,
   Table,
   TABLE_SORT_DIRECTION
-} from 'patternfly-react';
-import { Grid } from 'patternfly-react';
-import { PaginationRow, paginate, PAGINATION_VIEW } from 'patternfly-react';
+} from "patternfly-react";
+import { Grid } from "patternfly-react";
+import { PaginationRow, paginate, PAGINATION_VIEW } from "patternfly-react";
 
 /**
  * Reactabular client side data sorting based on the following api docs:
@@ -72,14 +72,14 @@ export default class PageMigrationRunningInstances extends React.Component {
       // column definitions
       columns: [
         {
-          property: 'select',
+          property: "select",
           header: {
-            label: 'Select all rows',
+            label: "Select all rows",
             props: {
               index: 0,
               rowSpan: 1,
               colSpan: 1,
-              id: 'SelectId'
+              id: "SelectId"
             },
             customFormatters: [selectionHeaderCellFormatter]
           },
@@ -99,9 +99,9 @@ export default class PageMigrationRunningInstances extends React.Component {
           }
         },
         {
-          property: 'processInstanceId',
+          property: "processInstanceId",
           header: {
-            label: 'processInstanceId',
+            label: "processInstanceId",
             props: {
               index: 1,
               rowSpan: 1,
@@ -119,9 +119,9 @@ export default class PageMigrationRunningInstances extends React.Component {
           }
         },
         {
-          property: 'name',
+          property: "name",
           header: {
-            label: 'Name',
+            label: "Name",
             props: {
               index: 2,
               rowSpan: 1,
@@ -139,9 +139,9 @@ export default class PageMigrationRunningInstances extends React.Component {
           }
         },
         {
-          property: 'description',
+          property: "description",
           header: {
-            label: 'Description',
+            label: "Description",
             props: {
               index: 3,
               rowSpan: 1,
@@ -159,9 +159,9 @@ export default class PageMigrationRunningInstances extends React.Component {
           }
         },
         {
-          property: 'startTime',
+          property: "startTime",
           header: {
-            label: 'Start Time',
+            label: "Start Time",
             props: {
               index: 4,
               rowSpan: 1,
@@ -179,9 +179,9 @@ export default class PageMigrationRunningInstances extends React.Component {
           }
         },
         {
-          property: 'state',
+          property: "state",
           header: {
-            label: 'Stae',
+            label: "Stae",
             props: {
               index: 5,
               rowSpan: 1,
@@ -250,7 +250,7 @@ export default class PageMigrationRunningInstances extends React.Component {
     const selected = selectedRows.indexOf(row.id) > -1;
     return {
       className: classNames({ selected }),
-      role: 'row'
+      role: "row"
     };
   };
   onSelectAllRows = event => {
@@ -259,9 +259,13 @@ export default class PageMigrationRunningInstances extends React.Component {
     const currentRows = this.currentRows().rows;
 
     if (checked) {
-      const updatedSelections = [...new Set([...currentRows.map(r => r.id), ...selectedRows])];
-      const updatedRows = rows.map(
-        r => (updatedSelections.indexOf(r.id) > -1 ? PageMigrationRunningInstances.selectRow(r) : r)
+      const updatedSelections = [
+        ...new Set([...currentRows.map(r => r.id), ...selectedRows])
+      ];
+      const updatedRows = rows.map(r =>
+        updatedSelections.indexOf(r.id) > -1
+          ? PageMigrationRunningInstances.selectRow(r)
+          : r
       );
       this.setState({
         // important: you must update rows to force a re-render and trigger onRow hook
@@ -271,9 +275,13 @@ export default class PageMigrationRunningInstances extends React.Component {
       this.updateSelectedProcessIds(rows, updatedSelections);
     } else {
       const ids = currentRows.map(r => r.id);
-      const updatedSelections = selectedRows.filter(r => !(ids.indexOf(r) > -1));
-      const updatedRows = rows.map(
-        r => (updatedSelections.indexOf(r.id) > -1 ? r : PageMigrationRunningInstances.deselectRow(r))
+      const updatedSelections = selectedRows.filter(
+        r => !(ids.indexOf(r) > -1)
+      );
+      const updatedRows = rows.map(r =>
+        updatedSelections.indexOf(r.id) > -1
+          ? r
+          : PageMigrationRunningInstances.deselectRow(r)
       );
       this.setState({
         rows: updatedRows,
@@ -285,22 +293,20 @@ export default class PageMigrationRunningInstances extends React.Component {
   };
 
   updateSelectedProcessIds = (rows, updatedSelectedRows) => {
-      var i;
-      var ids='';
-      for (i = 0; i < updatedSelectedRows.length; i ++){
-          const rowId = updatedSelectedRows[i];
-//          console.log('onSelectRow rowId: ' + rowId);
-//          console.log('onSelectRow processInstanceId: ' + rows[rowId-1].processInstanceId);
-          if (ids === ''){
-              ids = '' + rows[rowId-1].processInstanceId;
-          }else{
-              ids = ids + "," + rows[rowId-1].processInstanceId;
-          }
+    var i;
+    var ids = "";
+    for (i = 0; i < updatedSelectedRows.length; i++) {
+      const rowId = updatedSelectedRows[i];
+      //          console.log('onSelectRow rowId: ' + rowId);
+      //          console.log('onSelectRow processInstanceId: ' + rows[rowId-1].processInstanceId);
+      if (ids === "") {
+        ids = "" + rows[rowId - 1].processInstanceId;
+      } else {
+        ids = ids + "," + rows[rowId - 1].processInstanceId;
       }
-      this.props.setRunngingInstancesIds(ids);
     }
-
-
+    this.props.setRunngingInstancesIds(ids);
+  };
 
   onSelectRow = (event, row) => {
     const { rows, selectedRows } = this.state;
@@ -325,13 +331,17 @@ export default class PageMigrationRunningInstances extends React.Component {
     }
   };
 
-
   onSubmit = () => {
     this.setPage(this.state.pageChangeValue);
   };
   setPage = value => {
     const page = Number(value);
-    if (!Number.isNaN(value) && value !== '' && page > 0 && page <= this.totalPages()) {
+    if (
+      !Number.isNaN(value) &&
+      value !== "" &&
+      page > 0 &&
+      page <= this.totalPages()
+    ) {
       const newPaginationState = Object.assign({}, this.state.pagination);
       newPaginationState.page = page;
       this.setState({ pagination: newPaginationState, pageChangeValue: page });
@@ -380,7 +390,11 @@ export default class PageMigrationRunningInstances extends React.Component {
           }}
         >
           <Table.Header headerRows={resolve.headerRows({ columns })} />
-          <Table.Body rows={sortedPaginatedRows.rows} rowKey="processInstanceId" onRow={this.onRow} />
+          <Table.Body
+            rows={sortedPaginatedRows.rows}
+            rowKey="processInstanceId"
+            onRow={this.onRow}
+          />
         </Table.PfProvider>
         <PaginationRow
           viewType={PAGINATION_VIEW.TABLE}

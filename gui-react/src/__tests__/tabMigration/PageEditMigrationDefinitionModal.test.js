@@ -6,9 +6,7 @@ import PageEditMigrationDefinitionModal from "../../component/tabMigration/PageE
 test("PageEditMigrationDefinitionModal renders correctly using snapshot", () => {
   const mockData = MockupData_Migrations_Definitions;
   const tree = renderer
-    .create(
-      <PageEditMigrationDefinitionModal rowData={mockData[0]}/>
-    )
+    .create(<PageEditMigrationDefinitionModal rowData={mockData[0]} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

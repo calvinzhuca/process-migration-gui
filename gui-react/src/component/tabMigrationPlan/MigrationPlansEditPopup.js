@@ -1,46 +1,40 @@
-import React from 'react';
+import React from "react";
 
 import { Button } from "patternfly-react";
 import { Modal } from "patternfly-react";
-import { Icon } from 'patternfly-react';
+import { Icon } from "patternfly-react";
 export default class MigrationPlansEditPopup extends React.Component {
-
-
   constructor() {
     super();
     this.state = { showEditPlanPopup: false };
-
   }
   closeEditPlanPopup = () => {
     this.setState({ showEditPlanPopup: false });
-  }
-  openEditPlanPopup = ()=>  {
+  };
+  openEditPlanPopup = () => {
     this.setState({ showEditPlanPopup: true });
-  }
+  };
 
   submit = () => {
-      //this component is used as "Import Plan"
-      if (this.props.actionName == "Import Plan"){
-          var input = document.getElementById("planEditArea");
-          var value = input.value;
-          //console.log("planEditArea value: " + value);
+    //this component is used as "Import Plan"
+    if (this.props.actionName == "Import Plan") {
+      var input = document.getElementById("planEditArea");
+      var value = input.value;
+      //console.log("planEditArea value: " + value);
 
-          //could be addPlan or editPlan, the planId is only needed for editPlan
-          this.props.updatePlan(value, this.props.planId);
-          this.props.retrieveAllPlans();
-      }else{
+      //could be addPlan or editPlan, the planId is only needed for editPlan
+      this.props.updatePlan(value, this.props.planId);
+      this.props.retrieveAllPlans();
+    } else {
       //this component is used as "Export Plan"
-          var input = document.getElementById("planEditArea");
-          var value = input.value;
-          navigator.clipboard.writeText(value);
-      }
-      this.setState({ showEditPlanPopup: false });
-
-  }
-
+      var input = document.getElementById("planEditArea");
+      var value = input.value;
+      navigator.clipboard.writeText(value);
+    }
+    this.setState({ showEditPlanPopup: false });
+  };
 
   render() {
-
     const defaultBody = (
       <form className="form-horizontal">
         <div className="form-group">
@@ -48,39 +42,57 @@ export default class MigrationPlansEditPopup extends React.Component {
             Migration Plan
           </label>
           <div className="col-sm-9">
-            <textarea className="form-control" id="planEditArea" name="planEditArea" rows="10" defaultValue={this.props.content}></textarea>
+            <textarea
+              className="form-control"
+              id="planEditArea"
+              name="planEditArea"
+              rows="10"
+              defaultValue={this.props.content}
+            />
           </div>
         </div>
       </form>
     );
 
-
     function DisplayButtonOrLabel(props) {
-      if (props.actionName == 'Import Plan'){
-          return <Button bsStyle="default" onClick={props.openEditPlanPopup}>
-                      {props.actionName}
-                  </Button>
-      }else{
-          return  <Button bsStyle="link" onClick={props.openEditPlanPopup}>
-                      <Icon type="pf" name="export" />
-                  </Button>
+      if (props.actionName == "Import Plan") {
+        return (
+          <Button bsStyle="default" onClick={props.openEditPlanPopup}>
+            {props.actionName}
+          </Button>
+        );
+      } else {
+        return (
+          <Button bsStyle="link" onClick={props.openEditPlanPopup}>
+            <Icon type="pf" name="export" />
+          </Button>
+        );
       }
-
     }
-
 
     return (
       <span>
-        <DisplayButtonOrLabel actionName={this.props.actionName}  openEditPlanPopup={this.openEditPlanPopup}/>
+        <DisplayButtonOrLabel
+          actionName={this.props.actionName}
+          openEditPlanPopup={this.openEditPlanPopup}
+        />
 
-        <Modal show={this.state.showEditPlanPopup} onHide={this.closeEditPlanPopup} size="lg">
+        <Modal
+          show={this.state.showEditPlanPopup}
+          onHide={this.closeEditPlanPopup}
+          size="lg"
+        >
           <Modal.Header>
             <Modal.CloseButton onClick={this.closeEditPlanPopup} />
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>{defaultBody}</Modal.Body>
           <Modal.Footer>
-            <Button bsStyle="default" className="btn-cancel" onClick={this.closeEditPlanPopup}>
+            <Button
+              bsStyle="default"
+              className="btn-cancel"
+              onClick={this.closeEditPlanPopup}
+            >
               Cancel
             </Button>
             <Button bsStyle="primary" onClick={this.submit}>

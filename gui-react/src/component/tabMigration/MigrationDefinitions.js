@@ -110,9 +110,9 @@ export default class MigrationDefinitions extends Component {
         validationMessage: "Error: migration id should be numeric"
       });
     } else {
-        this.setState({
-          validationMessage: ""
-        });
+      this.setState({
+        validationMessage: ""
+      });
       if (USE_MOCK_DATA) {
         console.log("retriveMigrationDefinitions use mock data: ");
         const migrationsDefinitions = MockupData_Migrations_Definitions;
@@ -354,7 +354,8 @@ export default class MigrationDefinitions extends Component {
             />
             <button type="button" onClick={this.retriveMigrationDefinitions}>
               <span className="fa fa-search" />
-            </button>{this.state.validationMessage}
+            </button>
+            {this.state.validationMessage}
           </div>
         </div>
         <br />
