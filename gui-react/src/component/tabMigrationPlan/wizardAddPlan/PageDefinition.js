@@ -37,7 +37,7 @@ export default class PageDefinition extends Component {
       sourceProcessId: "evaluation",
       sourceContainerId: "evaluation_1.0.0-SNAPSHOT",
       targetProcessId: "Mortgage_Process.MortgageApprovalProcess",
-      targetContainerId: "mortgage-process_1.0.0-SNAPSHOT"
+      targetContainerId: "mortgage-process_2.0.0-SNAPSHOT"
     });
   };
 

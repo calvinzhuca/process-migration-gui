@@ -46,7 +46,7 @@ public class KieServiceImpl implements KieService {
         ProcessInfo targetInfo = getProcessInfo(targetContainerId, targetProcessId);
         targetInfo.setContainerId(targetContainerId);;
         //System.out.println("targetInfo: " + gson.toJson(targetInfo));
-        
+
         bothInfo.setSourceInfo(sourceInfo);
         bothInfo.setTargetInfo(targetInfo);
         return gson.toJson(bothInfo);
@@ -59,6 +59,9 @@ public class KieServiceImpl implements KieService {
 
         ProcessInfo processInfo = new ProcessInfo();
         String svgFile = ServicesUtil.getKieServiceProxy().getProcessDefinitionImage(containerId, processId);
+        //Add this replacement here because in react-svgmt, ? and = are not allowed. 
+        svgFile = svgFile.replaceAll("\\?shapeType=BACKGROUND", "_shapeType_BACKGROUND");
+
         processInfo.setSvgFile(svgFile);
         //System.out.println("svgFile: " + svgFile);
         String processDefinitionStr = ServicesUtil.getKieServiceProxy().getProcessDefinition(containerId, processId);
