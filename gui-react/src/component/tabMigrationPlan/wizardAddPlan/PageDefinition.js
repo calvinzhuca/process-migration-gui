@@ -13,37 +13,20 @@ export default class PageDefinition extends Component {
 
     this.state = {
       sourceProcessId: "",
-      sourceGroupId: "",
-      sourceArtifactId: "",
-      sourceVersion: "",
+      sourceContainerId: "",
       targetProcessId: "",
-      targetGroupId: "",
-      targetArtifactId: "",
-      targetVersion: ""
+      targetContainerId: ""
     };
   }
 
   //This is used in add plan wizard (for edit plan) to load the inital data to form fields
   componentDidMount() {
     if (this.props.initSourceContainerId != null) {
-      const sourceVersion = this.props.initSourceContainerId.substring(
-        this.props.initSourceContainerId.indexOf("_") + 1,
-        this.props.initSourceContainerId.length
-      );
-      const targetVersion = this.props.initTargetContainerId.substring(
-        this.props.initTargetContainerId.indexOf("_") + 1,
-        this.props.initTargetContainerId.length
-      );
-
       this.setState({
         sourceProcessId: this.props.initProcessId,
-        sourceGroupId: this.props.initProcessId,
-        sourceArtifactId: this.props.initProcessId,
-        sourceVersion: sourceVersion,
+        sourceContainerId: this.props.initSourceContainerId,
         targetProcessId: this.props.initProcessId,
-        targetGroupId: this.props.initProcessId,
-        targetArtifactId: this.props.initProcessId,
-        targetVersion: targetVersion
+        targetContainerId: this.props.initTargetContainerId
       });
     }
   }
@@ -52,22 +35,16 @@ export default class PageDefinition extends Component {
   fillWithTestRecord = () => {
     this.setState({
       sourceProcessId: "evaluation",
-      sourceGroupId: "evaluation",
-      sourceArtifactId: "evaluation",
-      sourceVersion: "2.0.0-SNAPSHOT",
+      sourceContainerId: "evaluation_1.0.0-SNAPSHOT",
       targetProcessId: "Mortgage_Process.MortgageApprovalProcess",
-      targetGroupId: "mortgage-process",
-      targetArtifactId: "mortgage-process",
-      targetVersion: "1.0.0-SNAPSHOT"
+      targetContainerId: "mortgage-process_1.0.0-SNAPSHOT"
     });
   };
 
   copySourceToTarget = () => {
     this.setState({
       targetProcessId: this.state.sourceProcessId,
-      targetGroupId: this.state.sourceGroupId,
-      targetArtifactId: this.state.sourceArtifactId,
-      targetVersion: this.state.sourceVersion
+      targetContainerId: this.state.sourceContainerId
     });
   };
 
@@ -75,32 +52,16 @@ export default class PageDefinition extends Component {
     this.setState({ sourceProcessId: value });
   };
 
-  handleSourceGroupIdChange = value => {
-    this.setState({ sourceGroupId: value });
-  };
-
-  handleSourceArtifactIdChange = value => {
-    this.setState({ sourceArtifactId: value });
-  };
-
-  handleSourceVersionChange = value => {
-    this.setState({ sourceVersion: value });
+  handleSourceContainerIdChange = value => {
+    this.setState({ sourceContainerId: value });
   };
 
   handleTargetProcessIdChange = value => {
     this.setState({ targetProcessId: value });
   };
 
-  handleTargetGroupIdChange = value => {
-    this.setState({ targetGroupId: value });
-  };
-
-  handleTargetArtifactIdChange = value => {
-    this.setState({ targetArtifactId: value });
-  };
-
-  handleTargetVersionChange = value => {
-    this.setState({ targetVersion: value });
+  handleTargetContainerIdChange = value => {
+    this.setState({ targetContainerId: value });
   };
 
   retriveBothInfo = () => {
@@ -150,13 +111,9 @@ export default class PageDefinition extends Component {
         .get(servicesUrl, {
           params: {
             sourceProcessId: this.state.sourceProcessId,
-            sourceGroupId: this.state.sourceGroupId,
-            sourceArtifactId: this.state.sourceArtifactId,
-            sourceVersion: this.state.sourceVersion,
+            sourceContainerId: this.state.sourceContainerId,
             targetProcessId: this.state.targetProcessId,
-            targetGroupId: this.state.targetGroupId,
-            targetArtifactId: this.state.targetArtifactId,
-            targetVersion: this.state.targetVersion
+            targetContainerId: this.state.targetContainerId
           }
         })
         .then(res => {
@@ -165,8 +122,7 @@ export default class PageDefinition extends Component {
           this.props.setInfo(res.data.sourceInfo, res.data.targetInfo);
 
           var input = document.getElementById("hiddenField_sourceContainerId");
-          var containerId =
-            this.state.sourceProcessId + "_" + this.state.sourceVersion;
+          var containerId = this.state.sourceContainerId;
           var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
             window.HTMLInputElement.prototype,
             "value"
@@ -177,8 +133,7 @@ export default class PageDefinition extends Component {
           input.dispatchEvent(ev);
 
           input = document.getElementById("hiddenField_targetContainerId");
-          containerId =
-            this.state.targetProcessId + "_" + this.state.targetVersion;
+          containerId = this.state.targetContainerId;
           nativeInputValueSetter = Object.getOwnPropertyDescriptor(
             window.HTMLInputElement.prototype,
             "value"
@@ -212,13 +167,9 @@ export default class PageDefinition extends Component {
         <PageDefinitionSearchTable
           tableHeader="Source "
           processId={this.state.sourceProcessId}
-          groupId={this.state.sourceGroupId}
-          artifactId={this.state.sourceArtifactId}
-          version={this.state.sourceVersion}
+          containerId={this.state.sourceContainerId}
           handleProcessIdChange={this.handleSourceProcessIdChange}
-          handleGroupIdChange={this.handleSourceGroupIdChange}
-          handleArtifactIdChange={this.handleSourceArtifactIdChange}
-          handleVersionChange={this.handleSourceVersionChange}
+          handleContainerIdChange={this.handleSourceContainerIdChange}
           initContainerId={this.props.initSourceContainerId}
           initProcessId={this.props.initProcessId}
         />
@@ -231,13 +182,9 @@ export default class PageDefinition extends Component {
         <PageDefinitionSearchTable
           tableHeader="Target "
           processId={this.state.targetProcessId}
-          groupId={this.state.targetGroupId}
-          artifactId={this.state.targetArtifactId}
-          version={this.state.targetVersion}
+          containerId={this.state.targetContainerId}
           handleProcessIdChange={this.handleTargetProcessIdChange}
-          handleGroupIdChange={this.handleTargetGroupIdChange}
-          handleArtifactIdChange={this.handleTargetArtifactIdChange}
-          handleVersionChange={this.handleTargetVersionChange}
+          handleContainerIdChange={this.handleTargetContainerIdChange}
           initContainerId={this.props.initTargetContainerId}
           initProcessId={this.props.initProcessId}
         />

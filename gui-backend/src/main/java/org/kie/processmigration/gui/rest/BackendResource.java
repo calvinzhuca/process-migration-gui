@@ -25,29 +25,28 @@ public class BackendResource {
 
     //@Inject
     //WorkbenchServices workbenchServices;
-
     @Inject
     KieService kieService;
 
     @Inject
     PimService pimService;
-    
+
     @GET
     @Path("/both")
     public Response getBothProcessInfo(
-            @QueryParam("sourceProcessId") String sourceProcessId, @QueryParam("sourceGroupId") String sourceGroupId, @QueryParam("sourceArtifactId") String sourceArtifactId, @QueryParam("sourceVersion") String sourceVersion,
-            @QueryParam("targetProcessId") String targetProcessId, @QueryParam("targetGroupId") String targetGroupId, @QueryParam("targetArtifactId") String targetArtifactId, @QueryParam("targetVersion") String targetVersion
+            @QueryParam("sourceProcessId") String sourceProcessId, @QueryParam("sourceContainerId") String sourceContainerId,
+            @QueryParam("targetProcessId") String targetProcessId, @QueryParam("targetContainerId") String targetContainerId
     ) throws URISyntaxException {
-        
+
         //Change from parsing workbench's kjar to invoke KIE service 
-     /*  
+        /*  
         String result = workbenchServices.getBothInfoJsonFromKjar(sourceProcessId, sourceGroupId, sourceArtifactId, sourceVersion,
                 targetProcessId, targetGroupId, targetArtifactId, targetVersion
         );
 
-        */
-     
-        String result = kieService.getBothInfoJson("evaluation_1.0.0-SNAPSHOT", "evaluation", "mortgage-process_1.0.0-SNAPSHOT", "Mortgage_Process.MortgageApprovalProcess");
+         */
+        System.out.println("!!!!!!!!!!!!!! sourceContainerId" + sourceContainerId);
+        String result = kieService.getBothInfoJson(sourceContainerId, sourceProcessId, targetContainerId, targetProcessId);
 
         return Response.ok(result).build();
     }
@@ -63,8 +62,8 @@ public class BackendResource {
     @GET
     @Path("/plans")
     public Response pimServicesGetAllPlans() throws IOException, URISyntaxException {
-            String result = pimService.getAllPlans();
-            return Response.ok(result).build();
+        String result = pimService.getAllPlans();
+        return Response.ok(result).build();
     }
 
     @POST
@@ -126,7 +125,7 @@ public class BackendResource {
         String result = pimService.updateMigration(migration, id);
         return Response.ok(result).build();
     }
-    
+
     @DELETE
     @Path("/migrations/{id}")
     public Response pimServicesDeleteMigration(@PathParam("id") String id) throws IOException, URISyntaxException {

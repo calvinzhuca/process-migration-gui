@@ -41,11 +41,11 @@ public class KieServiceImpl implements KieService {
 
         ProcessInfo sourceInfo = getProcessInfo(sourceContainerId, sourceProcessId);
         sourceInfo.setContainerId(sourceContainerId);;
-        System.out.println("sourceInfo: " + gson.toJson(sourceInfo));
+        //System.out.println("sourceInfo: " + gson.toJson(sourceInfo));
 
         ProcessInfo targetInfo = getProcessInfo(targetContainerId, targetProcessId);
         targetInfo.setContainerId(targetContainerId);;
-        System.out.println("targetInfo: " + gson.toJson(targetInfo));
+        //System.out.println("targetInfo: " + gson.toJson(targetInfo));
         
         bothInfo.setSourceInfo(sourceInfo);
         bothInfo.setTargetInfo(targetInfo);
@@ -54,13 +54,13 @@ public class KieServiceImpl implements KieService {
     }
 
     private ProcessInfo getProcessInfo(String containerId, String processId) throws URISyntaxException {
-        System.out.println("containerId: " + containerId);
-        System.out.println("processId: " + processId);
+        //System.out.println("containerId: " + containerId);
+        //System.out.println("processId: " + processId);
 
         ProcessInfo processInfo = new ProcessInfo();
         String svgFile = ServicesUtil.getKieServiceProxy().getProcessDefinitionImage(containerId, processId);
         processInfo.setSvgFile(svgFile);
-        System.out.println("svgFile: " + svgFile);
+        //System.out.println("svgFile: " + svgFile);
         String processDefinitionStr = ServicesUtil.getKieServiceProxy().getProcessDefinition(containerId, processId);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

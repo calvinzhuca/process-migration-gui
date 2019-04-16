@@ -21,7 +21,28 @@ exports[`PageDefinition renders correctly using snapshot 1`] = `
         className="col-sm-2 control-label"
       >
         Source 
-         processId
+         ContainerID
+      </label>
+      <div
+        className="col-sm-10"
+      >
+        <input
+          className="form-control"
+          name="ContainerId"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="form-group required"
+    >
+      <label
+        className="col-sm-2 control-label"
+      >
+        Source 
+         ProcessId
       </label>
       <div
         className="col-sm-10"
@@ -29,69 +50,6 @@ exports[`PageDefinition renders correctly using snapshot 1`] = `
         <input
           className="form-control"
           name="processId"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="form-group required"
-    >
-      <label
-        className="col-sm-2 control-label"
-      >
-        Source 
-         Group ID
-      </label>
-      <div
-        className="col-sm-10"
-      >
-        <input
-          className="form-control"
-          name="groupId"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="form-group required"
-    >
-      <label
-        className="col-sm-2 control-label"
-      >
-        Source 
-         Artifact ID
-      </label>
-      <div
-        className="col-sm-10"
-      >
-        <input
-          className="form-control"
-          name="artifactId"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="form-group required"
-    >
-      <label
-        className="col-sm-2 control-label"
-      >
-        Source 
-         Version
-      </label>
-      <div
-        className="col-sm-10"
-      >
-        <input
-          className="form-control"
-          name="version"
           onChange={[Function]}
           type="text"
           value=""
@@ -117,7 +75,28 @@ exports[`PageDefinition renders correctly using snapshot 1`] = `
         className="col-sm-2 control-label"
       >
         Target 
-         processId
+         ContainerID
+      </label>
+      <div
+        className="col-sm-10"
+      >
+        <input
+          className="form-control"
+          name="ContainerId"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="form-group required"
+    >
+      <label
+        className="col-sm-2 control-label"
+      >
+        Target 
+         ProcessId
       </label>
       <div
         className="col-sm-10"
@@ -125,69 +104,6 @@ exports[`PageDefinition renders correctly using snapshot 1`] = `
         <input
           className="form-control"
           name="processId"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="form-group required"
-    >
-      <label
-        className="col-sm-2 control-label"
-      >
-        Target 
-         Group ID
-      </label>
-      <div
-        className="col-sm-10"
-      >
-        <input
-          className="form-control"
-          name="groupId"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="form-group required"
-    >
-      <label
-        className="col-sm-2 control-label"
-      >
-        Target 
-         Artifact ID
-      </label>
-      <div
-        className="col-sm-10"
-      >
-        <input
-          className="form-control"
-          name="artifactId"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="form-group required"
-    >
-      <label
-        className="col-sm-2 control-label"
-      >
-        Target 
-         Version
-      </label>
-      <div
-        className="col-sm-10"
-      >
-        <input
-          className="form-control"
-          name="version"
           onChange={[Function]}
           type="text"
           value=""
