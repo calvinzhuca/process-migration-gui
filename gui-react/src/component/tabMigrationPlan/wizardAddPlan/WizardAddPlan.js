@@ -28,7 +28,8 @@ export default class WizardAddPlan extends WizardBase {
       targetContainerId: "",
       targetProcessId: "",
       mappings: "",
-      migrationPlanJsonStr: ""
+      migrationPlanJsonStr: "",
+      wizardHeaderTitle: "Add Migration Plan Wizard"
     };
   }
 
@@ -47,7 +48,8 @@ export default class WizardAddPlan extends WizardBase {
       mappings: "",
       migrationPlanJsonStr: "",
       editPlanMode: false,
-      planId: ""
+      planId: "",
+      wizardHeaderTitle: "Add Migration Plan Wizard"
     });
   }
 
@@ -67,7 +69,8 @@ export default class WizardAddPlan extends WizardBase {
       mappings: rowData.mappings,
       migrationPlanJsonStr: jsonStr,
       editPlanMode: true,
-      planId: rowData.id
+      planId: rowData.id,
+      wizardHeaderTitle: "Edit Migration Plan Wizard"
     });
   }
 
@@ -240,7 +243,7 @@ export default class WizardAddPlan extends WizardBase {
           >
             <Wizard.Header
               onClose={this.props.closeAddPlanWizard}
-              title="Add Migration Plan Wizard"
+              title={this.state.wizardHeaderTitle}
             />
             <Wizard.Body>
               <Wizard.Steps
