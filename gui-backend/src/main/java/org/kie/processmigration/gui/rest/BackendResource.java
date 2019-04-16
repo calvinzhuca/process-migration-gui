@@ -1,6 +1,6 @@
 package org.kie.processmigration.gui.rest;
 
-import org.kie.processmigration.gui.service.WorkbenchServices;
+//import org.kie.processmigration.gui.service.WorkbenchServices;
 import org.kie.processmigration.gui.model.MigrationDefinition;
 import org.kie.processmigration.gui.model.Plan;
 import java.io.IOException;
@@ -19,13 +19,12 @@ import javax.ws.rs.core.Response;
 import javax.inject.Inject;
 import org.kie.processmigration.gui.service.KieService;
 import org.kie.processmigration.gui.service.PimService;
-import org.kie.processmigration.gui.service.impl.PimServiceImpl;
 
 @Path("/")
 public class BackendResource {
 
-    @Inject
-    WorkbenchServices workbenchServices;
+    //@Inject
+    //WorkbenchServices workbenchServices;
 
     @Inject
     KieService kieService;
@@ -35,13 +34,21 @@ public class BackendResource {
     
     @GET
     @Path("/both")
-    public Response getBothInfoJsonFromKjar(
+    public Response getBothProcessInfo(
             @QueryParam("sourceProcessId") String sourceProcessId, @QueryParam("sourceGroupId") String sourceGroupId, @QueryParam("sourceArtifactId") String sourceArtifactId, @QueryParam("sourceVersion") String sourceVersion,
             @QueryParam("targetProcessId") String targetProcessId, @QueryParam("targetGroupId") String targetGroupId, @QueryParam("targetArtifactId") String targetArtifactId, @QueryParam("targetVersion") String targetVersion
-    ) throws IOException {
+    ) throws URISyntaxException {
+        
+        //Change from parsing workbench's kjar to invoke KIE service 
+     /*  
         String result = workbenchServices.getBothInfoJsonFromKjar(sourceProcessId, sourceGroupId, sourceArtifactId, sourceVersion,
                 targetProcessId, targetGroupId, targetArtifactId, targetVersion
         );
+
+        */
+     
+        String result = kieService.getBothInfoJson("evaluation_1.0.0-SNAPSHOT", "evaluation", "mortgage-process_1.0.0-SNAPSHOT", "Mortgage_Process.MortgageApprovalProcess");
+
         return Response.ok(result).build();
     }
 

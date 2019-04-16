@@ -52,6 +52,7 @@ public class BackendResourceWithMockTest {
         server.close();
     }
 
+    /*
     @Test
     public void getKjarInfoFromMock() throws Exception {
         String mockResult = "mock kjar info";
@@ -72,7 +73,7 @@ public class BackendResourceWithMockTest {
         assertEquals(mockResult, returnJsonStr);
         System.out.println("-- getKjarInfoFromMock is tested ");
     }
-
+    */
     @Test
     public void getRunningInstancesFromMock() throws Exception {
         String mockResult = "mock running instances number 123";

@@ -19,6 +19,9 @@
     "plugins": [
         "react"
     ],
+    "settings": {
+        "react": { "version" : "999.999.999" }
+    },
     "rules": {
         "no-console":1,
         "react/prop-types":0,
