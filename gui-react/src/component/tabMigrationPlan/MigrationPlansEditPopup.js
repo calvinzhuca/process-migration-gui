@@ -3,6 +3,8 @@ import React from "react";
 import { Button } from "patternfly-react";
 import { Modal } from "patternfly-react";
 import { Icon } from "patternfly-react";
+import { OverlayTrigger } from "patternfly-react";
+import { Tooltip } from "patternfly-react";
 export default class MigrationPlansEditPopup extends React.Component {
   constructor() {
     super();
@@ -35,6 +37,12 @@ export default class MigrationPlansEditPopup extends React.Component {
   };
 
   render() {
+    const tooltipExport = (
+      <Tooltip id="tooltip">
+        <div>Export Migration Plan</div>
+      </Tooltip>
+    );
+
     const defaultBody = (
       <form className="form-horizontal">
         <div className="form-group">
@@ -63,9 +71,11 @@ export default class MigrationPlansEditPopup extends React.Component {
         );
       } else {
         return (
-          <Button bsStyle="link" onClick={props.openEditPlanPopup}>
-            <Icon type="pf" name="export" />
-          </Button>
+          <OverlayTrigger overlay={tooltipExport} placement={"bottom"}>
+            <Button bsStyle="link" onClick={props.openEditPlanPopup}>
+              <Icon type="pf" name="export" />
+            </Button>
+          </OverlayTrigger>
         );
       }
     }

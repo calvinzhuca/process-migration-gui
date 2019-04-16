@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Table } from "patternfly-react";
 import { Icon } from "patternfly-react";
+import { OverlayTrigger } from "patternfly-react";
+import { Tooltip } from "patternfly-react";
 import { actionHeaderCellFormatter } from "patternfly-react";
 
 import MigrationPlansEditPopup from "./MigrationPlansEditPopup";
@@ -9,6 +11,22 @@ export default class MigrationPlansTable extends Component {
   render() {
     const headerFormat = value => <Table.Heading>{value}</Table.Heading>;
     const cellFormat = value => <Table.Cell>{value}</Table.Cell>;
+    const tooltipExecute = (
+      <Tooltip id="tooltip">
+        <div>Execute Migration Plan</div>
+      </Tooltip>
+    );
+
+    const tooltipDelete = (
+      <Tooltip id="tooltip">
+        <div>Delete</div>
+      </Tooltip>
+    );
+    const tooltipEdit = (
+      <Tooltip id="tooltip">
+        <div>Edit</div>
+      </Tooltip>
+    );
 
     const planBootstrapColumns = [
       {
@@ -84,12 +102,14 @@ export default class MigrationPlansTable extends Component {
           formatters: [
             (value, { rowData }) => [
               <Table.Actions key="0">
-                <Table.Button
-                  bsStyle="link"
-                  onClick={() => this.props.openMigrationWizard(rowData)}
-                >
-                  <Icon type="fa" name="play" />
-                </Table.Button>
+                <OverlayTrigger overlay={tooltipExecute} placement={"bottom"}>
+                  <Table.Button
+                    bsStyle="link"
+                    onClick={() => this.props.openMigrationWizard(rowData)}
+                  >
+                    <Icon type="fa" name="play" />
+                  </Table.Button>
+                </OverlayTrigger>
               </Table.Actions>,
               <Table.Actions key="1">
                 <MigrationPlansEditPopup
@@ -103,22 +123,26 @@ export default class MigrationPlansTable extends Component {
                 />
               </Table.Actions>,
               <Table.Actions key="2">
-                <Table.Button
-                  bsStyle="link"
-                  onClick={() => this.props.showDeleteDialog(rowData.id)}
-                >
-                  <Icon type="fa" name="trash" />
-                </Table.Button>
+                <OverlayTrigger overlay={tooltipDelete} placement={"bottom"}>
+                  <Table.Button
+                    bsStyle="link"
+                    onClick={() => this.props.showDeleteDialog(rowData.id)}
+                  >
+                    <Icon type="fa" name="trash" />
+                  </Table.Button>
+                </OverlayTrigger>
               </Table.Actions>,
               <Table.Actions key="3">
-                <Table.Button
-                  bsStyle="link"
-                  onClick={() =>
-                    this.props.openAddPlanWizardwithInitialData(rowData)
-                  }
-                >
-                  <Icon type="fa" name="edit" />
-                </Table.Button>
+                <OverlayTrigger overlay={tooltipEdit} placement={"bottom"}>
+                  <Table.Button
+                    bsStyle="link"
+                    onClick={() =>
+                      this.props.openAddPlanWizardwithInitialData(rowData)
+                    }
+                  >
+                    <Icon type="fa" name="edit" />
+                  </Table.Button>
+                </OverlayTrigger>
               </Table.Actions>
             ]
           ]
