@@ -31,31 +31,35 @@ export default class PageMappingDiagrams extends Component {
 
     return (
       <div className="form-group">
-        {this.displayDiagramButton(
-          this.props.sourceDiagramButtonClick,
-          sourceDisplayText
-        )}
-        &nbsp;
-        {this.displayDiagramButton(
-          this.props.targetDiagramButtonClick,
-          targetDisplayText
-        )}
-        <h2 style={sourceShown}>
+        <div>
+          {this.displayDiagramButton(
+            this.props.sourceDiagramButtonClick,
+            sourceDisplayText
+          )}
+          &nbsp;
+          {this.displayDiagramButton(
+            this.props.targetDiagramButtonClick,
+            targetDisplayText
+          )}
+        </div>
+        <br />
+        <label style={sourceShown}>
           Source Process Definition Diagram
           <PageMappingDiagramsSvgPan
             svgcontents={this.props.sourceInfo.svgFile}
             previousSelector={this.props.sourcePreviousSelector}
             currentSelector={this.props.sourceCurrentSelector}
           />
-        </h2>
-        <h2 style={targetShown}>
+        </label>
+        <br />
+        <label style={targetShown}>
           Target Process Definition Diagram
           <PageMappingDiagramsSvgPan
             svgcontents={this.props.targetInfo.svgFile}
             previousSelector={this.props.targetPreviousSelector}
             currentSelector={this.props.targetCurrentSelector}
           />
-        </h2>
+        </label>
       </div>
     );
   }
